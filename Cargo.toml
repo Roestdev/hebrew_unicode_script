@@ -9,7 +9,7 @@ documentation = "https://docs.rs/crate/hebrew_unicode_script"
 repository = ""
 keywords = ["hebrew", "language", "unicode"]
 categories = ["text-processing"]
-readme = "Readme.md"
+readme = "README.md"
 
 [dev-dependencies]
 is-even = "1.0.0"
