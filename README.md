@@ -85,6 +85,25 @@ pub fn get_character_types(s: &str) -> HebrewCharacterTypes {
 }
 ```
 
+*Output:*
+   
+```
+The following letter types are found in: אַתָּ֣ה יָ֭דַעְתָּ שִׁבְתִּ֣י וְקוּמִ֑י בַּ֥נְתָּהg p לְ֝רֵעִ֗י מֵרָחֽוֹק׃
+HebrewCharacterTypes {
+     accent: true,
+     mark: false,
+     vowel_point: true,
+     punctuation: true,
+     letter: true,
+     letter_normal: true,
+     letter_final: false,
+     yod_triangle: false,
+     ligature_yiddish: false,
+     whitespace: true,
+     non_hebrew: true,
+}
+```
+
 ### Panics
 Not that I am aware of.
 
