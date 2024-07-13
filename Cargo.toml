@@ -1,0 +1,15 @@
+[package]
+name = "hebrew_unicode_script"
+version = "0.1.0"
+edition = "2021"
+license = "MIT OR Apache-2.0"
+authors = ["Roest Dev <github.ebook242@passinbox.com>"]
+description = "A lightweight library to check if a hebrew character belongs to certain collections"
+documentation = "https://docs.rs/crate/hebrew_unicode_script"
+repository = ""
+keywords = ["hebrew", "language", "unicode"]
+categories = ["text-processing"]
+readme = "Readme.md"
+
+[dev-dependencies]
+is-even = "1.0.0"
