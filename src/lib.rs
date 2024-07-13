@@ -35,9 +35,11 @@ pub use self::apf_block::*;
 pub use self::hebrew_block::*;
 pub use self::script::*;
 
+
 pub mod script {
     use crate::is_hebrew_block;
     use crate::is_hebrew_apf_block;
+
     /// Checks if the given character belongs to the unicode script 'Hebrew'.
     ///
     /// Reference: <https://www.charactercodes.net/script/hebr>
@@ -45,7 +47,7 @@ pub mod script {
     /// # Example
     ///
     /// ```
-    /// 
+    /// use hebrew_unicode_script::is_hebrew_script;
     /// let hebrew_ch = 'מ';
     /// assert!(is_hebrew_script(hebrew_ch));
     ///
@@ -453,17 +455,126 @@ mod tests {
         }
     }
     #[test]
-    fn test_yiddish_chars() {
+    fn test_hebrew_yiddish_chars() {
         let test_str = "װױײ";
         for c in test_str.chars() {
             assert!(is_ligature_yiddish(c));
         }
     }
     #[test]
-    fn test_yod_triangle() {
+    fn test_hebrew_yod_triangle() {
         let yod_triangle = '\u{05EF}';
         assert!(is_yod_triangle(yod_triangle));
     }
+
+    #[test]
+fn test_apf_point() {
+
+    let test_ch = '\u{FB1E}'; // HEBREW POINT JUDEO-SPANISH VARIKA
+
+    // unicode script 'Hebrew'
+    assert_eq!(is_hebrew_script(test_ch), true);
+
+    // unicode block Hebrew
+    assert_eq!(is_hebrew_block(test_ch), false);
+    assert_eq!(is_accent(test_ch), false);
+    assert_eq!(is_mark(test_ch), false);
+    assert_eq!(is_vowel_point(test_ch), false);
+    assert_eq!(is_punctuation(test_ch), false);
+    assert_eq!(is_letter_normal(test_ch), false);
+    assert_eq!(is_letter(test_ch), false);
+    assert_eq!(is_yod_triangle(test_ch), false);
+    assert_eq!(is_ligature_yiddish(test_ch), false);
+
+    // unicode block 'Alphabetic Presentation Form'
+    assert_eq!(is_hebrew_apf_block(test_ch), true);
+    assert_eq!(is_apf_point(test_ch), true);
+    assert_eq!(is_apf_letter(test_ch), false);
+    assert_eq!(is_apf_ligature_yiddisch(test_ch), false);
+    assert_eq!(is_apf_ligature(test_ch), false);
+
+}
+
+#[test]
+fn test_apf_letter() {
+    let test_ch = '\u{FB1D}'; // HEBREW LETTER YOD WITH HIRIQ
+
+    // unicode script 'Hebrew'
+    assert_eq!(is_hebrew_script(test_ch), true);
+
+    // unicode block Hebrew
+    assert_eq!(is_hebrew_block(test_ch), false);
+    assert_eq!(is_accent(test_ch), false);
+    assert_eq!(is_mark(test_ch), false);
+    assert_eq!(is_vowel_point(test_ch), false);
+    assert_eq!(is_punctuation(test_ch), false);
+    assert_eq!(is_letter_normal(test_ch), false);
+    assert_eq!(is_letter(test_ch), false);
+    assert_eq!(is_yod_triangle(test_ch), false);
+    assert_eq!(is_ligature_yiddish(test_ch), false);
+
+    // unicode block 'Alphabetic Presentation Form'
+    assert_eq!(is_hebrew_apf_block(test_ch), true);
+    assert_eq!(is_apf_point(test_ch), false);
+    assert_eq!(is_apf_letter(test_ch), true);
+    assert_eq!(is_apf_ligature_yiddisch(test_ch), false);
+    assert_eq!(is_apf_ligature(test_ch), false);
+
+}
+
+#[test]
+fn test_apf_ligature_yiddisch() {
+    let test_ch = '\u{FB1F}'; // HEBREW LIGATURE YIDDISH YOD YOD PATAH
+
+    // unicode script 'Hebrew'
+    assert_eq!(is_hebrew_script(test_ch), true);
+
+    // unicode block Hebrew
+    assert_eq!(is_hebrew_block(test_ch), false);
+    assert_eq!(is_accent(test_ch), false);
+    assert_eq!(is_mark(test_ch), false);
+    assert_eq!(is_vowel_point(test_ch), false);
+    assert_eq!(is_punctuation(test_ch), false);
+    assert_eq!(is_letter_normal(test_ch), false);
+    assert_eq!(is_letter(test_ch), false);
+    assert_eq!(is_yod_triangle(test_ch), false);
+    assert_eq!(is_ligature_yiddish(test_ch), false);
+
+    // unicode block 'Alphabetic Presentation Form'
+    assert_eq!(is_hebrew_apf_block(test_ch), true);
+    assert_eq!(is_apf_point(test_ch), false);
+    assert_eq!(is_apf_letter(test_ch), false);
+    assert_eq!(is_apf_ligature_yiddisch(test_ch), true);
+    assert_eq!(is_apf_ligature(test_ch), false);
+
+}
+
+#[test]
+fn test_apf_ligature() {
+    let test_ch = '\u{FB4F}'; // HEBREW LETTER WIDE DALET
+
+    // unicode script 'Hebrew'
+    assert_eq!(is_hebrew_script(test_ch), true);
+
+    // unicode block Hebrew
+    assert_eq!(is_hebrew_block(test_ch), false);
+    assert_eq!(is_accent(test_ch), false);
+    assert_eq!(is_mark(test_ch), false);
+    assert_eq!(is_vowel_point(test_ch), false);
+    assert_eq!(is_punctuation(test_ch), false);
+    assert_eq!(is_letter_normal(test_ch), false);
+    assert_eq!(is_letter(test_ch), false);
+    assert_eq!(is_yod_triangle(test_ch), false);
+    assert_eq!(is_ligature_yiddish(test_ch), false);
+
+    // unicode block 'Alphabetic Presentation Form'
+    assert_eq!(is_hebrew_apf_block(test_ch), true);
+    assert_eq!(is_apf_point(test_ch), false);
+    assert_eq!(is_apf_letter(test_ch), false);
+    assert_eq!(is_apf_ligature_yiddisch(test_ch), false);
+    assert_eq!(is_apf_ligature(test_ch), true);
+}
+
     fn check_accents(str: &str) {
         // str is an alternation of consonant-accent-consonat-accent ...
         for (position, c) in str.chars().enumerate() {
