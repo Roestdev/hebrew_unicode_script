@@ -34,7 +34,7 @@ Run the following Cargo command in your project directory:
 ```
 cargo add hebrew_unicode_script
 ```
-**OR** add the following line to your Cargo.toml under **[dependencies]**
+**OR** add the following line to your Cargo.toml under **dependencies**
 ```
 hebrew_unicode_script = "0.1.1"
 ```
@@ -139,12 +139,12 @@ See the crate modules for more examples.
 **Unicode Block Names**
 1. *Hebrew*
     - See <https://www.unicode.org/charts/PDF/U0590.pdf>
-     - Only the following code-point range is applicable: *U+0590 .. U+05FF*
-    - See also: <https://graphemica.com/blocks/hebrew/>  
+      - **Note:** only the following code-point range is applicable: *U+0590 .. U+05FF*
+      - See also: <https://graphemica.com/blocks/hebrew/>  
 2. *Alphabetic Presentation Form*
-    - See <https://www.unicode.org/charts/PDF/UFB00.pdf)> 
-     - Only the following code-point range is applicable: *U+FB1D .. U+FB4F*
-    - See also: <https://graphemica.com/blocks/alphabetic-presentation-forms>  
+    - See <https://www.unicode.org/charts/PDF/UFB00.pdf> 
+      - **Note:** only the following code-point range is applicable: *U+FB1D .. U+FB4F*
+      - See also: <https://graphemica.com/blocks/alphabetic-presentation-forms>  
 
 Learn more about [Unicode](https://www.unicode.org/), [Unicode scripts](https://www.unicode.org/standard/supported.html) and [Unicode code point blocks](https://www.unicode.org/Public/UCD/latest/ucd/Blocks.txt)
 
