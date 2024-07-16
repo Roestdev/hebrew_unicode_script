@@ -196,10 +196,7 @@ pub mod hebrew_block {
     /// ```
     pub fn is_letter_final(c: char) -> bool {
         // 05DA + 05DD + 05DF + 05E3 + 05E5
-        matches!(
-            c,
-            '\u{05DA}' | '\u{05DD}' | '\u{05DF}' | '\u{05E3}' | '\u{05E5}'
-        )
+        matches!(c,'\u{05DA}' | '\u{05DD}' | '\u{05DF}' | '\u{05E3}' | '\u{05E5}')
     }
     /// Checks if the given character is a Hebrew letter (final OR normal)
     ///

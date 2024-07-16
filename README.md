@@ -1,17 +1,19 @@
-Hebrew_Unicode_Script
-=
-# Table of contents
+# Hebrew_Unicode_Script
+
+## Table of contents
 1. [Description](#description)
 2. [Install](#install)
-3. [Unicode References](#unicode_ref)
-4. [Safety](#safety)
-5. [Panics](#panics)
-6. [Errors](#errors)
-7. [Code Coverage](#codecoverage)
-8. [License](#license)
+3. [Examples](#examples)
+4. [Unicode References](#unicode_ref)
+5. [Safety](#safety)
+6. [Panics](#panics)
+7. [Errors](#errors)
+8. [Code Coverage](#codecoverage)
+9. [License](#license)
 
 
 ## Description <a name="description"></a>
+
 This crate (*hebrew_unicode_script*) is a Rust library designed to facilitate the identification and validation of Unicode characters related to the Hebrew script and its associated blocks.   
 This library provides a set of functions that allow developers to easily determine whether a particular character belongs to the *Hebrew unicode script*, falls within the *Hebrew unicode code block* or matches the *Alphabetic Presentation Form* unicode code block.   
 For each of the applicable *unicode code blocks* there are some additional functions, allowing an even more sophisticated check for the *character type* within each code block. Examples include vowels, accents, marks, etc. etc.  
@@ -42,16 +44,18 @@ Each function in this library returns a boolean value, making it easy to integra
 4. is_apf_ligature(c: char) -> bool
 
 ## Install <a name="install"></a>
+
 Run the following Cargo command in your project directory:
-```
-cargo add hebrew_unicode_script
-```
+
+`cargo add hebrew_unicode_script`
+
 **OR** add the following line to your Cargo.toml under **dependencies**
-```
-hebrew_unicode_script = "0.1.1"
-```
+
+`hebrew_unicode_script = "0.1.1`
+
 
 ## Examples <a name="examples"></a>
+
 ```rust
 use hebrew_unicode_script::is_hebrew_block;
 if is_hebrew_block('מ') {
@@ -145,6 +149,7 @@ HebrewCharacterTypes {
 See the crate modules for more examples.
 
 ## Unicode References <a name="unicode_ref"></a>
+
 **Unicode Script**   
 - [Hebrew](https://www.charactercodes.net/script/hebr)
 
@@ -162,38 +167,48 @@ Learn more about [Unicode](https://www.unicode.org/), [Unicode scripts](https://
 
 
 ## Safety <a name="safety"></a>
+
 All functions are written in safe Rust.
 
 ## Panics <a name="panics"></a>
+
 Not that I am aware of.
 
 ## Errors <a name="errors"></a>
+
 All functions return either true *or* false.
 
 ## Code Coverage <a name="codecoverage"></a>
 
-Current code coverage is *99%* [^1]
+Current code coverage is *100%* [^1]
 [^1]: The code coverage figures shown in crates.io are (very) different! I don't know why :-) (WIP)
 
-Based upon:  <https://blog.rng0.io/how-to-do-code-coverage-in-rust/#running-locally>
+![Code Coverage](../../../images/Code_Coverage_20240716_152021.png)
+
+Based upon:  [code coverage, running locally](https://blog.rng0.io/how-to-do-code-coverage-in-rust/#running-locally)
 
 Actions:
 1. Install the extension [Coverage Gutters](https://github.com/ryanluker/vscode-coverage-gutters)
-2. Execute: *cargo clear && cargo build && cargo test*
-3. Execute: *CARGO_INCREMENTAL=0 RUSTFLAGS='-Cinstrument-coverage' LLVM_PROFILE_FILE='cargo-test-%p-%m.profraw' cargo test*  
-   - result -> (new file) cargo-test-67187-8558864636421498001_0.profraw
-4. Execute: *grcov . --binary-path ./target/debug/deps/ -s . -t lcov --branch --ignore-not-existing --ignore '../*' --ignore "/*" -o target/coverage/tests.lcov*
+2. Execute: `cargo clean && cargo build && cargo test && mkdir -p target/coverage/html`
+3. Execute: `CARGO_INCREMENTAL=0 RUSTFLAGS='-Cinstrument-coverage' LLVM_PROFILE_FILE='cargo-test-%p-%m.profraw' cargo test`
+   - result -> (new file) cargo-test-67187-8558864636421498001_0.profraw (on my system)
+
+Option 1: Using Coverage Gutters
+
+1. Execute: `grcov . --binary-path ./target/debug/deps/ -s . -t lcov --branch --ignore-not-existing --ignore '../*' --ignore "/*" -o target/coverage/tests.lcov`
    - result -> (new file) tests.lcov
-5. Click on the *Watch* button (added to VSCodium by the Ext)
+  
+2. Click on the *Watch* button (added to VSCodium by the Ext)
    - result -> red/green indications will appear for each line of code
    
-   OR 
+Option 2: Creating a webpage
 
-4. Execute: *grcov . --binary-path ./target/debug/deps/ -s . -t html --branch --ignore-not-existing --ignore '../*' --ignore "/*" -o html*
-   - result -> a new directory called *html*
-5. Open the file *index.html* in the folder html in your brower and you get a full report.
+1. Execute: `grcov . --binary-path ./target/debug/deps/ -s . -t html --branch --ignore-not-existing --ignore '../*' --ignore "/*" -o coverage/html`
+    - result -> a new directory called *html*
+2. Open the file *index.html* in the folder html in your brower and you get a full report.
 
 ## License <a name="license"></a>
+
 Licensed under either of <a href="LICENSE-APACHE">Apache License, Version
 2.0</a> or <a href="LICENSE-MIT">MIT license</a> at your option.
 
