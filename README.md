@@ -183,7 +183,7 @@ All functions return either true *or* false.
 Current code coverage is *100%* [^1]
 [^1]: The code coverage figures shown in crates.io are (very) different! I don't know why :-) (WIP)
 
-![Code Coverage](../../../images/Code_Coverage_20240716_152021.png)
+![Code Coverage](images/Code_Coverage_20240716_152021.png)
 
 Based upon:  [code coverage, running locally](https://blog.rng0.io/how-to-do-code-coverage-in-rust/#running-locally)
 
