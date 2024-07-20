@@ -1,5 +1,5 @@
 # Hebrew_Unicode_Script
-<span style="color:blue">some *blue* text</span>.
+
 ## Table of contents
 1. [Description](#description)
 2. [Install](#install)
