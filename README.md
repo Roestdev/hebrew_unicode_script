@@ -1,15 +1,19 @@
-# Hebrew_Unicode_Script
+# Hebrew_Unicode_Script 
 
-## Table of contents
-1. [Description](#description)
-2. [Install](#install)
-3. [Examples](#examples)
-4. [Unicode References](#unicode_ref)
-5. [Safety](#safety)
-6. [Panics](#panics)
-7. [Errors](#errors)
-8. [Code Coverage](#codecoverage)
-9. [License](#license)
+## Table of contents <a name="toc"></a>
+- [Hebrew\_Unicode\_Script](#hebrew_unicode_script)
+  - [Table of contents ](#table-of-contents-)
+  - [Description ](#description-)
+      - [Notes](#notes)
+  - [Install ](#install-)
+  - [Examples ](#examples-)
+  - [Unicode References ](#unicode-references-)
+  - [Safety ](#safety-)
+  - [Panics ](#panics-)
+  - [Errors ](#errors-)
+  - [Code Coverage ](#code-coverage-)
+  - [License ](#license-)
+  - [Contribution ](#contribution-)
 
 
 ## Description <a name="description"></a>
@@ -19,29 +23,48 @@ This library provides a set of functions that allow developers to easily determi
 For each of the applicable *unicode code blocks* there are some additional functions, allowing an even more sophisticated check for the *character type* within each code block. Examples include vowels, accents, marks, etc. etc.  
 Each function in this library returns a boolean value, making it easy to integrate these checks into existing or new applications.
 
-##### For unicode script (top level):
-1. is_hebrew_script(c: char) -> bool
+```text
+For unicode script (top level):
+  - is_hebrew_script(c: char) -> bool
 
-##### For unicode blocks (2nd level): 
-1. is_hebrew_block(c: char) -> bool
-2. is_hebrew_apf_block(c: char) -> bool
+For unicode blocks (2nd level): 
+  - is_hebrew_block(c: char) -> bool
+  - is_hebrew_apf_block(c: char) -> bool
 
-##### For unicode block *hebrew* (3rd level): 
-1. is_accent(c: char) -> bool
-2. is_mark(c: char) -> bool
-3. is_vowel_point(c: char) -> bool
-4. is_punctuation(c: char) -> bool
-5. is_letter_normal(c: char) -> bool
-6. is_letter_final(c: char) -> bool
-7. is_letter(c: char) -> bool
-8. is_yod_triangle(c: char) -> bool
-9. is_ligature_yiddish(c: char) -> bool
+For unicode block: 'Hebrew' (3rd level): 
+  - is_accent(c: char) -> bool
+  - is_mark(c: char) -> bool
+  - is_vowel_point(c: char) -> bool
+  - is_punctuation(c: char) -> bool
+  - is_letter_normal(c: char) -> bool
+  - is_letter_final(c: char) -> bool
+  - is_letter(c: char) -> bool
+  - is_yod_triangle(c: char) -> bool
+  - is_ligature_yiddish(c: char) -> bool
 
-##### For unicode block *Alphabetic Presentation Form* (3rd level): 
-1. is_apf_point(c: char) -> bool
-2. is_apf_letter(c: char) -> bool
-3. is_apf_ligature_yiddisch(c: char) -> bool
-4. is_apf_ligature(c: char) -> bool
+For unicode block: 'Alphabetic Presentation Form'*' (3rd level): 
+  - is_apf_point(c: char) -> bool
+  - is_apf_letter(c: char) -> bool
+  - is_apf_ligature_yiddisch(c: char) -> bool
+  - is_apf_ligature(c: char) -> bool
+```
+
+#### Notes
+- Hebrew **points** can be subdivided in:
+  - Vowels (code points: *U+05B4 .. U+05BB, U+05C7*)
+  - Semi-Vowels (code points: U+05B0 .. U+05B3)  
+  - Reading Signs (code points: *U+05BC .. U+05C2*) ^judeo-spanish
+  [^judeo-spanish]: I don't know if the HEBREW POINT JUDEO-SPANISH VARIKA a reading sign!
+
+
+- Hebrew **letters** can be subdivided in:
+  - Normal consonants (code points: *U+05D0 .. U+05D9, U+05DB, U+05DC, U+05DE, U+05E0 .. U+05E2, U+05E4, U+05E6 .. U+05EA*)
+  - Final consonants (code points: *U+05DA, U+05DD, U+05DF, U+05E3 and U+05E5*)  
+  - Wide consonants (code points: *U+FB21 .. U+FB28*)
+  - Consonants with vowel (code points: *U+FB2A .. U+FB36, U+FB38 .. U+FB3C, U+FB3E, U+FB40, U+FB41, U+FB43, U+FB44, U+FB46 .. U+FB4E*)
+  - Alternative consonants (code points: *U+FB20, U+FB29*)
+
+[^ TOC](#toc)
 
 ## Install <a name="install"></a>
 
@@ -148,6 +171,9 @@ HebrewCharacterTypes {
 ```
 See the crate modules for more examples.
 
+
+[^ TOC](#toc)
+
 ## Unicode References <a name="unicode_ref"></a>
 
 **Unicode Script**   
@@ -166,26 +192,38 @@ See the crate modules for more examples.
 Learn more about [Unicode](https://www.unicode.org/), [Unicode scripts](https://www.unicode.org/standard/supported.html) and [Unicode code point blocks](https://www.unicode.org/Public/UCD/latest/ucd/Blocks.txt)
 
 
+
+[^ TOC](#toc)
+
 ## Safety <a name="safety"></a>
 
 All functions are written in safe Rust.
+
+
+[^ TOC](#toc)
 
 ## Panics <a name="panics"></a>
 
 Not that I am aware of.
 
+[^ TOC](#toc)
+
 ## Errors <a name="errors"></a>
 
 All functions return either true *or* false.
 
+
+[^ TOC](#toc)
+
 ## Code Coverage <a name="codecoverage"></a>
 
-Current code coverage is *100%* [^1]
-[^1]: The code coverage figures shown in crates.io are (very) different! I don't know why :-) (WIP)
+Current code coverage is *100%* [^code coverage]
+[^code coverage]: The code coverage figures shown in crates.io are (very) different! I don't know why :-) (WIP)
 
 ![Code Coverage](images/Code_Coverage_20240716_152021.png)
 
-Based upon:  [code coverage, running locally](https://blog.rng0.io/how-to-do-code-coverage-in-rust/#running-locally)
+
+I used [code coverage, running locally](https://blog.rng0.io/how-to-do-code-coverage-in-rust/#running-locally)
 
 Actions:
 1. Install the extension [Coverage Gutters](https://github.com/ryanluker/vscode-coverage-gutters)
@@ -207,11 +245,21 @@ Option 2: Creating a webpage
     - result -> a new directory called *html*
 2. Open the file *index.html* in the folder html in your brower and you get a full report.
 
+
+[^ TOC](#toc)
+
 ## License <a name="license"></a>
 
 Licensed under either of <a href="LICENSE-APACHE">Apache License, Version
 2.0</a> or <a href="LICENSE-MIT">MIT license</a> at your option.
 
+
+[^ TOC](#toc)
+
+## Contribution <a name="contribution"></a>
+
 Unless you explicitly state otherwise, any contribution intentionally submitted
 for inclusion in this crate by you, as defined in the Apache-2.0 license, shall
 be dual licensed as above, without any additional terms or conditions.
+
+[^ TOC](#toc)
