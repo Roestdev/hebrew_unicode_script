@@ -3,7 +3,7 @@
 - [Hebrew\_Unicode\_Script](#hebrew_unicode_script)
   - [Table of contents ](#table-of-contents-)
   - [Description ](#description-)
-      - [Notes](#notes)
+    - [Notes](#notes)
   - [Install ](#install-)
   - [Examples ](#examples-)
   - [References ](#references-)
@@ -26,37 +26,39 @@ Each function in this library returns a boolean value, making it easy to integra
 
 ```text
 For unicode script (top level):
-  - is_hebrew_script(c: char) -> bool
+  - is_hbr_script(c: char) -> bool
 
-For unicode blocks (2nd level): 
-  - is_hebrew_block(c: char) -> bool
-  - is_hebrew_apf_block(c: char) -> bool
-
-For unicode block: 'Hebrew' (3rd level): 
-  - is_accent(c: char) -> bool
-  - is_mark(c: char) -> bool
-  - is_point(c: char) -> bool
-  - is_punctuation(c: char) -> bool
-  - is_hbr_consonant_consonant(c: char) -> bool
-  - is_hbr_consonant_final(c: char) -> bool
+For unicode block: 'Hebrew': 
+  - is_hbr_accent(c: char) -> bool
+  - is_hbr_mark(c: char) -> bool
+  - is_hbr_point(c: char) -> bool
+    - is_hbr_point_vowel(c) -> bool
+    - is_hbr_point_semi_vowel(c) -> bool
+    - is_hbr_point_reading_sign(c) -> bool
+  - is_hbr_punctuation(c: char) -> bool
   - is_hbr_consonant(c: char) -> bool
-  - is_yod_triangle(c: char) -> bool
-  - is_ligature_yiddish(c: char) -> bool
+    - is_hbr_consonant_normal(c: char) -> bool
+    - is_hbr_consonant_final(c: char) -> bool
+  - is_hbr_yod_triangle(c: char) -> bool
+  - is_hbr_ligature_yiddish(c: char) -> bool
 
-For unicode block: 'Alphabetic Presentation Form'*' (3rd level): 
-  - is_apf_point(c: char) -> bool
-  - is_apf_letter(c: char) -> bool
+For unicode block: 'Alphabetic Presentation Form':
+  - is_apf_block(c: char) -> bool
+  - is_apf_point_reading_sign(c: char) -> bool
+  - is_apf_consonant(c: char) -> bool
+    - is_apf_consonant_alternative(c: char) -> bool
+    - is_apf_consonant_wide(c: char) -> bool
+    - is_apf_consonant_with_vowel(c: char) -> bool
   - is_apf_ligature_yiddisch(c: char) -> bool
   - is_apf_ligature(c: char) -> bool
 ```
 
-#### Notes
+### Notes
 - Hebrew **points** can be subdivided in:
   - Vowels (code points: *U+05B4 .. U+05BB, U+05C7*)
   - Semi-Vowels (code points: U+05B0 .. U+05B3)  
   - Reading Signs (code points: *U+05BC .. U+05C2*) ^judeo-spanish
   [^judeo-spanish]: I don't know if the HEBREW POINT JUDEO-SPANISH VARIKA a reading sign!
-
 
 - Hebrew **letters** can be subdivided in:
   - Normal consonants (code points: *U+05D0 .. U+05D9, U+05DB, U+05DC, U+05DE, U+05E0 .. U+05E2, U+05E4, U+05E6 .. U+05EA*)
@@ -243,7 +245,7 @@ Option 1: Using Coverage Gutters
    
 Option 2: Creating a webpage
 
-1. Execute: `grcov . --binary-path ./target/debug/deps/ -s . -t html --branch --ignore-not-existing --ignore '../*' --ignore "/*" -o coverage/html`
+1. Execute: `grcov . --binary-path ./target/debug/deps/ -s . -t html --branch --ignore-not-existing --ignore '../*' --ignore "/*" -o target/coverage/html`
     - result -> a new directory called *html*
 2. Open the file *index.html* in the folder html in your brower and you get a full report.
 

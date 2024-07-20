@@ -160,7 +160,7 @@ pub mod hebrew_block {
     /// use hebrew_unicode_script::is_hbr_point_semi_vowel;
     /// use is_even::IsEven;
     ///
-    /// let test_str = "מָ";
+    /// let test_str = "מְזֱלֲשֳ";
     /// for (position, c) in test_str.chars().enumerate() {
     ///   let position_u8 = u8::try_from(position).unwrap();
     ///   if position_u8.is_even() {
@@ -172,13 +172,8 @@ pub mod hebrew_block {
     /// }
     /// ```
     pub fn is_hbr_point_semi_vowel(c: char) -> bool {
-        // 05B0 .. 05BD + 05BF + 05C1 .. 05C2 + 05C7
-        matches!(c,
-            '\u{05B0}'..='\u{05BD}'
-            | '\u{05BF}'
-            | '\u{05C1}'..='\u{05C2}'
-            | '\u{05C7}'
-        )
+        // 05B0 .. 05B3
+        matches!(c, '\u{05B0}'..='\u{05B3}')
     }
     /// Checks if the given character is a Hebrew reading sign
     ///
@@ -188,7 +183,8 @@ pub mod hebrew_block {
     /// use hebrew_unicode_script::is_hbr_point_reading_sign;
     /// use is_even::IsEven;
     ///
-    /// let test_str = "מָ";
+    /// //let test_str = "ׁהּשׂש";
+    /// let test_str = "שׁהּשׂ";
     /// for (position, c) in test_str.chars().enumerate() {
     ///   let position_u8 = u8::try_from(position).unwrap();
     ///   if position_u8.is_even() {
@@ -200,12 +196,11 @@ pub mod hebrew_block {
     /// }
     /// ```
     pub fn is_hbr_point_reading_sign(c: char) -> bool {
-        // 05B0 .. 05BD + 05BF + 05C1 .. 05C2 + 05C7
+        // 05BC .. 05BD + 05BF + 05C1 .. 05C2
         matches!(c,
-            '\u{05B0}'..='\u{05BD}'
+            '\u{05BC}'..='\u{05BD}'
             | '\u{05BF}'
             | '\u{05C1}'..='\u{05C2}'
-            | '\u{05C7}'
         )
     }
     /// Checks if the given character is a Hebrew punctuation.
@@ -213,17 +208,18 @@ pub mod hebrew_block {
     /// # Example
     ///
     /// ```
-    /// use hebrew_unicode_script::is_hbr_mark;
+    /// use hebrew_unicode_script::is_hbr_punctuation;
     /// use is_even::IsEven;
     ///
-    /// let test_str = "ב֯";
+    /// //let test_str = "ב֯";
+    /// let test_str = "א־ר׃";
     /// for (position, c) in test_str.chars().enumerate() {
     ///   let position_u8 = u8::try_from(position).unwrap();
     ///   if position_u8.is_even() {
     ///     // even position is a normal letter (non_mark)
-    ///     assert!(!is_hbr_mark(c));
+    ///     assert!(!is_hbr_punctuation(c));
     ///   } else {
-    ///     assert!(is_hbr_mark(c));
+    ///     assert!(is_hbr_punctuation(c));
     ///   }
     /// }
     /// ```
@@ -231,9 +227,36 @@ pub mod hebrew_block {
         // 05BE + 05C0 + 05C3 + 05C6 + 05F3 + 05F4
         matches!(
             c,
-            '\u{05BE}' | '\u{05C0}' | '\u{05C3}' | '\u{05C6}' | '\u{05F3}'..='\u{05F4}'
+            '\u{05BE}' | '\u{05C0}' | '\u{05C3}' | '\u{05C6}' | '\u{05F3}' | '\u{05F4}'
         )
     }
+
+    /// Checks if the given character is a Hebrew letter (final OR normal)
+    ///
+    /// # Example
+    ///
+    /// ```
+    /// use hebrew_unicode_script::is_hbr_consonant;
+    /// use is_even::IsEven;
+    ///
+    /// let test_str = "אבגדהוזחטיכךלמםנןסעפףצץקרשת";
+    /// for c in test_str.chars() {
+    ///   assert!(is_hbr_consonant(c));
+    /// }
+    ///
+    /// let test_str = "sl";
+    /// for c in test_str.chars() {
+    ///   assert!(!is_hbr_consonant(c));
+    /// }
+    /// ```
+    pub fn is_hbr_consonant(c: char) -> bool {
+        match c {
+            c if is_hbr_consonant_normal(c) => true,
+            c if is_hbr_consonant_final(c) => true,
+            _ => false,
+        }
+    }
+
     /// Checks if the given character is a normal Hebrew consonant
     ///
     /// # Example
@@ -279,26 +302,9 @@ pub mod hebrew_block {
         matches!(
             c,
             '\u{05DA}' | '\u{05DD}' | '\u{05DF}' | '\u{05E3}' | '\u{05E5}'
-            
         )
     }
-    /// Checks if the given character is a Hebrew letter (final OR normal)
-    ///
-    /// # Example
-    ///
-    /// ```
-    /// use hebrew_unicode_script::is_hbr_consonant;
-    /// use is_even::IsEven;
-    ///
-    /// let test_str = "אבגדהוזחטיכךלמםנןסעפףצץקרשת";
-    /// for c in test_str.chars() {
-    ///   assert!(is_hbr_consonant(c));
-    /// }
-    /// ```
-    pub fn is_hbr_consonant(c: char) -> bool {
-        // 05D0 .. 05EA
-        matches!(c, '\u{05D0}'..='\u{05EA}')
-    }
+
     /// Checks if the given character is a Hebrew yod triangle.
     ///
     /// # Example
@@ -308,6 +314,8 @@ pub mod hebrew_block {
     ///
     /// let yod_triangle = '\u{05EF}';
     /// assert!(is_hbr_yod_triangle(yod_triangle));
+    /// let non_yod_triangle = '\u{0031}';
+    /// assert!(!is_hbr_yod_triangle(non_yod_triangle));
     /// ```
     pub fn is_hbr_yod_triangle(c: char) -> bool {
         matches!(c, '\u{05EF}')
@@ -322,6 +330,10 @@ pub mod hebrew_block {
     /// let test_str = "װױײ";
     /// for c in test_str.chars() {
     ///   assert!(is_hbr_ligature_yiddish(c));
+    /// }    
+    /// let test_str = "ythk";
+    /// for c in test_str.chars() {
+    ///   assert!(!is_hbr_ligature_yiddish(c));
     /// }
     /// ```
     pub fn is_hbr_ligature_yiddish(c: char) -> bool {
@@ -400,11 +412,11 @@ pub mod apf_block {
     /// ```
     /// use hebrew_unicode_script::is_apf_consonant_alternative;
     ///
-    /// let afp_l = '\u{FB20}';
-    /// assert!(is_apf_consonant_alternative(afp_l));
+    /// let afp_alternative = '\u{FB20}';
+    /// assert!(is_apf_consonant_alternative(afp_alternative));
     ///
-    /// let afp_l = 'p';
-    /// assert!(!is_apf_consonant_alternative(afp_l));
+    /// let non_afp_alternative = 'p';
+    /// assert!(!is_apf_consonant_alternative(non_afp_alternative));
     /// ```
     pub fn is_apf_consonant_alternative(c: char) -> bool {
         // U+FB20  + U+FB29
@@ -418,11 +430,11 @@ pub mod apf_block {
     /// ```
     /// use hebrew_unicode_script::is_apf_consonant_wide;
     ///
-    /// let afp_l = '\u{FB21}';
-    /// assert!(is_apf_consonant_wide(afp_l));
+    /// let afp_wide = '\u{FB21}';
+    /// assert!(is_apf_consonant_wide(afp_wide));
     ///
-    /// let afp_l = '\u{FB29}';
-    /// assert!(!is_apf_consonant_wide(afp_l));
+    /// let non_afp_wide = '\u{FB29}';
+    /// assert!(!is_apf_consonant_wide(non_afp_wide));
     /// ```
     pub fn is_apf_consonant_wide(c: char) -> bool {
         // U+FB21  + U+FB28
@@ -436,19 +448,19 @@ pub mod apf_block {
     /// ```
     /// use hebrew_unicode_script::is_apf_consonant_with_vowel;
     ///
-    /// let afp_l = '\u{FB3E}';
-    /// assert!(is_apf_consonant_with_vowel(afp_l));
+    /// let with_vowel = '\u{FB3E}';
+    /// assert!(is_apf_consonant_with_vowel(with_vowel));
     ///
-    /// let afp_l = 'p';
-    /// assert!(!is_apf_consonant_with_vowel(afp_l));
+    /// let non_with_vowel = 'X';
+    /// assert!(!is_apf_consonant_with_vowel(non_with_vowel));
     /// ```
     pub fn is_apf_consonant_with_vowel(c: char) -> bool {
-        // U+FB1D + (U+FB20 .. U+FB36) + (U+FB38 .. U+FB3C) + U+FB3E + (U+FB40 .. U+FB41)
+        // U+FB1D + (U+FB2A .. U+FB36) + (U+FB38 .. U+FB3C) + U+FB3E + (U+FB40 .. U+FB41)
         // + (U+FB43 .. U+FB44) + (U+FB46 .. U+FB4E)
         matches!(
             c,
             '\u{FB1D}'
-            | '\u{FB20}'..='\u{FB36}'
+            | '\u{FB2A}'..='\u{FB36}'
             | '\u{FB38}'..='\u{FB3C}'
             | '\u{FB3E}'
             | '\u{FB40}'..='\u{FB41}'
@@ -465,12 +477,12 @@ pub mod apf_block {
     /// use hebrew_unicode_script::is_apf_ligature_yiddisch;
     ///
     /// // HEBREW LIGATURE YIDDISH YOD YOD PATAH
-    /// let test_ch = '\u{FB1F}';
-    /// assert!(is_apf_ligature_yiddisch(test_ch));
+    /// let liga_yiddish = '\u{FB1F}';
+    /// assert!(is_apf_ligature_yiddisch(liga_yiddish));
     ///
     /// // ARABIC LETTER TEHEH ISOLATED FORM
-    /// let test_ch = '\u{FB62}';
-    ///   assert!(!is_apf_ligature_yiddisch(test_ch));
+    /// let non_liga_yiddish = '\u{FB62}';
+    ///   assert!(!is_apf_ligature_yiddisch(non_liga_yiddish));
     /// ```
     pub fn is_apf_ligature_yiddisch(c: char) -> bool {
         // U+FB1F
@@ -482,18 +494,19 @@ pub mod apf_block {
     /// use hebrew_unicode_script::is_apf_ligature;
     ///
     /// // HEBREW LIGATURE ALEF LAMED
-    /// let test_ch = '\u{FB4F}';
-    /// assert!(is_apf_ligature(test_ch));
+    /// let liga = '\u{FB4F}';
+    /// assert!(is_apf_ligature(liga));
     ///
     /// // HEBREW LIGATURE YIDDISH YOD YOD PATAH
-    /// let test_ch = '\u{FB1F}';
-    /// assert!(!is_apf_ligature(test_ch));
+    /// let non_liga = '\u{FB1F}';
+    /// assert!(!is_apf_ligature(non_liga));
     /// ```
     pub fn is_apf_ligature(c: char) -> bool {
         // U+FB4F
         matches!(c, '\u{FB4F}')
     }
 }
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -725,3 +738,4 @@ mod tests {
         }
     }
 }
+
