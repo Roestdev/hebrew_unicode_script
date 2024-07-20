@@ -1,5 +1,4 @@
-# Hebrew_Unicode_Script 
-
+# Hebrew_Unicode_Script
 ## Table of contents <a name="toc"></a>
 - [Hebrew\_Unicode\_Script](#hebrew_unicode_script)
   - [Table of contents ](#table-of-contents-)
@@ -7,7 +6,9 @@
       - [Notes](#notes)
   - [Install ](#install-)
   - [Examples ](#examples-)
-  - [Unicode References ](#unicode-references-)
+  - [References ](#references-)
+    - [Unicode Script](#unicode-script)
+    - [Unicode Block Names](#unicode-block-names)
   - [Safety ](#safety-)
   - [Panics ](#panics-)
   - [Errors ](#errors-)
@@ -34,11 +35,11 @@ For unicode blocks (2nd level):
 For unicode block: 'Hebrew' (3rd level): 
   - is_accent(c: char) -> bool
   - is_mark(c: char) -> bool
-  - is_vowel_point(c: char) -> bool
+  - is_point(c: char) -> bool
   - is_punctuation(c: char) -> bool
-  - is_letter_normal(c: char) -> bool
-  - is_letter_final(c: char) -> bool
-  - is_letter(c: char) -> bool
+  - is_hbr_consonant_consonant(c: char) -> bool
+  - is_hbr_consonant_final(c: char) -> bool
+  - is_hbr_consonant(c: char) -> bool
   - is_yod_triangle(c: char) -> bool
   - is_ligature_yiddish(c: char) -> bool
 
@@ -80,19 +81,19 @@ Run the following Cargo command in your project directory:
 ## Examples <a name="examples"></a>
 
 ```rust
-use hebrew_unicode_script::is_hebrew_block;
-if is_hebrew_block('מ') {
+use hebrew_unicode_script::is_hbr_block;
+if is_hbr_block('מ') {
 	println!("The character you entered is part of the 'unicode code block Hebrew'");
 }
 ```
 ```rust
-use hebrew_unicode_script::is_letter_final;
-use hebrew_unicode_script::is_letter;
+use hebrew_unicode_script::is_hbr_consonant_final;
+use hebrew_unicode_script::is_hbr_consonant;
 
 let test_str = "ךםןףץ";
 for c in test_str.chars() {
-    assert!(is_letter_final(c));
-    assert!(is_letter(c));
+    assert!(is_hbr_consonant_final(c));
+    assert!(is_hbr_consonant(c));
 }
 ```
 
@@ -113,7 +114,7 @@ fn main() {
 pub struct HebrewCharacterTypes {
     accent: bool,
     mark: bool,
-    vowel_point: bool,
+    point: bool,
     punctuation: bool,
     letter: bool,
     letter_normal: bool,
@@ -134,13 +135,13 @@ pub fn get_character_types(s: &str) -> HebrewCharacterTypes {
     let mut found_character_types = HebrewCharacterTypes::new();
     for c in s.chars() {
         match c {
-            c if is_accent(c) => found_character_types.accent = true,
-            c if is_mark(c) => found_character_types.mark = true,
-            c if is_vowel_point(c) => found_character_types.vowel_point = true,
-            c if is_punctuation(c) => found_character_types.punctuation = true,
-            c if is_letter_final(c) => found_character_types.letter_final = true,
-            c if is_yod_triangle(c) => found_character_types.yod_triangle = true,
-            c if is_ligature_yiddish(c) => found_character_types.ligature_yiddish = true,
+            c if is_hbr_accent(c) => found_character_types.accent = true,
+            c if is_hbr_mark(c) => found_character_types.mark = true,
+            c if is_hbr_point(c) => found_character_types.point = true,
+            c if is_hbr_punctuation(c) => found_character_types.punctuation = true,
+            c if is_hbr_consonant_final(c) => found_character_types.letter_final = true,
+            c if is_hbr_yod_triangle(c) => found_character_types.yod_triangle = true,
+            c if is_hbr_ligature_yiddish(c) => found_character_types.ligature_yiddish = true,
             c if c.is_whitespace() => found_character_types.whitespace = true,
             _ => found_character_types.non_hebrew = true,
         }
@@ -158,7 +159,7 @@ The following character types were found:
 HebrewCharacterTypes {
     accent: true,
     mark: false,
-    vowel_point: true,
+    point: true,
     punctuation: false,
     letter: true,
     letter_normal: true,
@@ -174,12 +175,14 @@ See the crate modules for more examples.
 
 [^ TOC](#toc)
 
-## Unicode References <a name="unicode_ref"></a>
+## References <a name="references"></a>
 
-**Unicode Script**   
-- [Hebrew](https://www.charactercodes.net/script/hebr)
+### Unicode Script  
 
-**Unicode Block Names**
+- [Unicode script for the Hebrew language](https://www.charactercodes.net/script/hebr)
+
+### Unicode Block Names
+
 1. *Hebrew*
     - See <https://www.unicode.org/charts/PDF/U0590.pdf>
       - **Note:** only the following code-point range is applicable: *U+0590 .. U+05FF*
@@ -190,7 +193,6 @@ See the crate modules for more examples.
       - See also: <https://graphemica.com/blocks/alphabetic-presentation-forms>  
 
 Learn more about [Unicode](https://www.unicode.org/), [Unicode scripts](https://www.unicode.org/standard/supported.html) and [Unicode code point blocks](https://www.unicode.org/Public/UCD/latest/ucd/Blocks.txt)
-
 
 
 [^ TOC](#toc)
