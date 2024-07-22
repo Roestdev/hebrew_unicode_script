@@ -10,6 +10,8 @@ repository = "https://github.com/Roestdev/hebrew_unicode_script/"
 keywords = ["hebrew", "language", "unicode"]
 categories = ["text-processing"]
 readme = "README.md"
+rust-version = "1.56.1"
 
 [dev-dependencies]
 is-even = "1.0.0"
+
