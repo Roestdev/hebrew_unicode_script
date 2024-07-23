@@ -60,12 +60,12 @@ pub mod hebrew_block {
     ///
     /// ```
     /// use hebrew_unicode_script::is_hbr_accent;
-    /// use is_even::IsEven;
+
     ///
     /// let test_str = "ב֑";
     /// for (position, c) in test_str.chars().enumerate() {
     ///   let position_u8 = u8::try_from(position).unwrap();
-    ///   if position_u8.is_even() {
+    ///   if position_u8 % 2 == 0 {
     ///     // even position is a normal letter (non-accent)
     ///     assert!(!is_hbr_accent(c));
     ///   } else {
@@ -83,12 +83,12 @@ pub mod hebrew_block {
     ///
     /// ```
     /// use hebrew_unicode_script::is_hbr_mark;
-    /// use is_even::IsEven;
+
     ///
     /// let test_str = "ב֯";
     /// for (position, c) in test_str.chars().enumerate() {
     ///   let position_u8 = u8::try_from(position).unwrap();
-    ///   if position_u8.is_even() {
+    ///   if position_u8 % 2 == 0 {
     ///     // even position is a normal letter (non-mark)
     ///     assert!(!is_hbr_mark(c));
     ///   } else {
@@ -107,12 +107,12 @@ pub mod hebrew_block {
     ///
     /// ```
     /// use hebrew_unicode_script::*;
-    /// use is_even::IsEven;
+
     ///
     /// let test_str = "מָ";
     /// for (position, c) in test_str.chars().enumerate() {
     ///   let position_u8 = u8::try_from(position).unwrap();
-    ///   if position_u8.is_even() {
+    ///   if position_u8 % 2 == 0 {
     ///     // even position is a normal letter (non-vowel-point)
     ///     assert!(!is_hbr_point(c));
     ///   } else {
@@ -135,12 +135,12 @@ pub mod hebrew_block {
     ///
     /// ```
     /// use hebrew_unicode_script::is_hbr_point_vowel;
-    /// use is_even::IsEven;
+
     ///
     /// let test_str = "מָ";
     /// for (position, c) in test_str.chars().enumerate() {
     ///   let position_u8 = u8::try_from(position).unwrap();
-    ///   if position_u8.is_even() {
+    ///   if position_u8 % 2 == 0 {
     ///     // even position is a normal letter (non-vowel-point)
     ///     assert!(!is_hbr_point_vowel(c));
     ///   } else {
@@ -158,12 +158,12 @@ pub mod hebrew_block {
     ///
     /// ```
     /// use hebrew_unicode_script::is_hbr_point_semi_vowel;
-    /// use is_even::IsEven;
+
     ///
     /// let test_str = "מְזֱלֲשֳ";
     /// for (position, c) in test_str.chars().enumerate() {
     ///   let position_u8 = u8::try_from(position).unwrap();
-    ///   if position_u8.is_even() {
+    ///   if position_u8 % 2 == 0 {
     ///     // even position is a normal letter (non-vowel-point)
     ///     assert!(!is_hbr_point_semi_vowel(c));
     ///   } else {
@@ -181,13 +181,13 @@ pub mod hebrew_block {
     ///
     /// ```
     /// use hebrew_unicode_script::is_hbr_point_reading_sign;
-    /// use is_even::IsEven;
+
     ///
     /// //let test_str = "ׁהּשׂש";
     /// let test_str = "שׁהּשׂ";
     /// for (position, c) in test_str.chars().enumerate() {
     ///   let position_u8 = u8::try_from(position).unwrap();
-    ///   if position_u8.is_even() {
+    ///   if position_u8 % 2 == 0 {
     ///     // even position is a normal letter (non-vowel-point)
     ///     assert!(!is_hbr_point_reading_sign(c));
     ///   } else {
@@ -209,13 +209,13 @@ pub mod hebrew_block {
     ///
     /// ```
     /// use hebrew_unicode_script::is_hbr_punctuation;
-    /// use is_even::IsEven;
+
     ///
     /// //let test_str = "ב֯";
     /// let test_str = "א־ר׃";
     /// for (position, c) in test_str.chars().enumerate() {
     ///   let position_u8 = u8::try_from(position).unwrap();
-    ///   if position_u8.is_even() {
+    ///   if position_u8 % 2 == 0 {
     ///     // even position is a normal letter (non_mark)
     ///     assert!(!is_hbr_punctuation(c));
     ///   } else {
@@ -237,7 +237,7 @@ pub mod hebrew_block {
     ///
     /// ```
     /// use hebrew_unicode_script::is_hbr_consonant;
-    /// use is_even::IsEven;
+
     ///
     /// let test_str = "אבגדהוזחטיכךלמםנןסעפףצץקרשת";
     /// for c in test_str.chars() {
@@ -510,7 +510,6 @@ pub mod apf_block {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use is_even::IsEven;
 
     #[test]
     fn test_hebrew_script() {
@@ -692,7 +691,7 @@ mod tests {
         // str is an alternation of consonant-accent-consonat-accent ...
         for (position, c) in str.chars().enumerate() {
             let position_u8 = u8::try_from(position).unwrap();
-            if position_u8.is_even() {
+            if position_u8 % 2 == 0 {
                 //println!("fn check_accents::at even position {} is: {}", pos_u8,c.escape_default());
                 assert!(is_hbr_consonant(c));
             } else {
@@ -704,7 +703,7 @@ mod tests {
     fn check_marks(str: &str) {
         for (pos, c) in str.chars().enumerate() {
             let pos_u8 = u8::try_from(pos).unwrap();
-            if pos_u8.is_even() {
+            if pos_u8 % 2 == 0 {
                 //println!("fn check_marks::at even position {} is: {}", pos_u8, c.escape_default());
                 assert!(is_hbr_consonant(c));
             } else {
@@ -716,7 +715,7 @@ mod tests {
     fn check_points(str: &str) {
         for (pos, c) in str.chars().enumerate() {
             let pos_u8 = u8::try_from(pos).unwrap();
-            if pos_u8.is_even() {
+            if pos_u8 % 2 == 0 {
                 //println!("fn check_points::char at even position {} is: {}", pos_u8, c.escape_default());
                 assert!(is_hbr_consonant(c));
             } else {
@@ -728,7 +727,7 @@ mod tests {
     fn check_punctuations(str: &str) {
         for (pos, c) in str.chars().enumerate() {
             let pos_u8 = u8::try_from(pos).unwrap();
-            if pos_u8.is_even() {
+            if pos_u8 % 2 == 0 {
                 //println!("fn check_punctuations::char at even position {} is: {}", pos_u8, c.escape_default());
                 assert!(is_hbr_consonant(c));
             } else {
@@ -738,4 +737,3 @@ mod tests {
         }
     }
 }
-

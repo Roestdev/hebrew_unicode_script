@@ -1,6 +1,6 @@
 [package]
 name = "hebrew_unicode_script"
-version = "0.2.1"
+version = "0.2.2"
 edition = "2021"
 license = "MIT OR Apache-2.0"
 authors = ["Roest Dev <github.ebook242@passinbox.com>"]
@@ -12,6 +12,4 @@ categories = ["text-processing"]
 readme = "README.md"
 rust-version = "1.56.1"
 
-[dev-dependencies]
-is-even = "1.0.0"
 
