@@ -77,8 +77,9 @@ Run the following Cargo command in your project directory:
 
 **OR** add the following line to your Cargo.toml under **dependencies**
 
-`hebrew_unicode_script = "0.1.1`
+`hebrew_unicode_script = "0.2.0`
 
+See crates.io for the latest version!
 
 ## Examples <a name="examples"></a>
 
@@ -89,8 +90,7 @@ if is_hbr_block('מ') {
 }
 ```
 ```rust
-use hebrew_unicode_script::is_hbr_consonant_final;
-use hebrew_unicode_script::is_hbr_consonant;
+use hebrew_unicode_script::{is_hbr_consonant_final, is_hbr_consonant};
 
 let test_str = "ךםןףץ";
 for c in test_str.chars() {
@@ -100,7 +100,8 @@ for c in test_str.chars() {
 ```
 
 ```rust
-use hebrew_unicode_script::*;
+use hebrew_unicode_script::{is_hbr_accent,is_hbr_mark, is_hbr_point, is_hbr_punctuation};
+use hebrew_unicode_script::{is_hbr_consonant_final,is_hbr_yod_triangle,is_hbr_ligature_yiddish};
 
 fn main() {
    // define a strings of characters

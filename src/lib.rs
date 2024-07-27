@@ -72,7 +72,6 @@ pub mod hebrew_block {
     ///
     /// ```
     /// use hebrew_unicode_script::is_hbr_mark;
-
     ///
     /// let test_str = "ב֯";
     /// for (position, c) in test_str.chars().enumerate() {
@@ -94,7 +93,7 @@ pub mod hebrew_block {
     /// # Example
     ///
     /// ```
-    /// use hebrew_unicode_script::*;
+    /// use hebrew_unicode_script::is_hbr_point;
     ///
     /// let test_str = "מָ";
     /// for (position, c) in test_str.chars().enumerate() {
@@ -206,7 +205,6 @@ pub mod hebrew_block {
             '\u{05BE}' | '\u{05C0}' | '\u{05C3}' | '\u{05C6}' | '\u{05F3}' | '\u{05F4}'
         )
     }
-
     /// Checks if the given character is a Hebrew letter (final OR normal)
     ///
     /// # Example
@@ -232,8 +230,7 @@ pub mod hebrew_block {
     /// # Example
     ///
     /// ```
-    /// use hebrew_unicode_script::is_hbr_consonant_normal;
-    /// use hebrew_unicode_script::is_hbr_consonant;
+    /// use hebrew_unicode_script::{is_hbr_consonant_normal, is_hbr_consonant};
     ///
     /// let test_str = "אבגדהוזחטיכלמנסעפצקרשת";
     /// for c in test_str.chars() {
@@ -258,8 +255,7 @@ pub mod hebrew_block {
     /// # Example
     ///
     /// ```
-    /// use hebrew_unicode_script::is_hbr_consonant_final;
-    /// use hebrew_unicode_script::is_hbr_consonant;
+    /// use hebrew_unicode_script::{is_hbr_consonant_final, is_hbr_consonant};
     ///
     /// let test_str = "ךםןףץ";
     /// for c in test_str.chars() {
