@@ -121,13 +121,14 @@ pub mod hebrew_block {
     /// }
     /// ```
     pub fn is_hbr_point(c: char) -> bool {
-        match c {
-            c if is_hbr_point_vowel(c) => true,
-            c if is_hbr_point_semi_vowel(c) => true,
-            c if is_hbr_point_reading_sign(c) => true,
+        is_hbr_point_vowel(c) || is_hbr_point_semi_vowel(c) || is_hbr_point_reading_sign(c)
+        // match c {
+        //     c if is_hbr_point_vowel(c) => true,
+        //     c if is_hbr_point_semi_vowel(c) => true,
+        //     c if is_hbr_point_reading_sign(c) => true,
 
-            _ => false,
-        }
+        //     _ => false,
+        // }
     }
     /// Checks if the given character is a Hebrew vowel
     ///
@@ -250,11 +251,12 @@ pub mod hebrew_block {
     /// }
     /// ```
     pub fn is_hbr_consonant(c: char) -> bool {
-        match c {
-            c if is_hbr_consonant_normal(c) => true,
-            c if is_hbr_consonant_final(c) => true,
-            _ => false,
-        }
+        is_hbr_consonant_normal(c) || is_hbr_consonant_final(c) 
+        // match c {
+        //     c if is_hbr_consonant_normal(c) => true,
+        //     c if is_hbr_consonant_final(c) => true,
+        //     _ => false,
+        // }
     }
 
     /// Checks if the given character is a normal Hebrew consonant
@@ -397,12 +399,14 @@ pub mod apf_block {
         //  - an alternative consonant
         //  - a wide consonant
         //  - a consonant with a vowel
-        match c {
-            c if is_apf_consonant_alternative(c) => true,
-            c if is_apf_consonant_wide(c) => true,
-            c if is_apf_consonant_with_vowel(c) => true,
-            _ => false,
-        }
+        
+        is_apf_consonant_alternative(c) || is_apf_consonant_wide(c) || is_apf_consonant_with_vowel(c)
+        // match c {
+        //     c if is_apf_consonant_alternative(c) => true,
+        //     c if is_apf_consonant_wide(c) => true,
+        //     c if is_apf_consonant_with_vowel(c) => true,
+        //     _ => false,
+        // }
     }
 
     /// Checks if the given character is an AFP an alternative letter.
