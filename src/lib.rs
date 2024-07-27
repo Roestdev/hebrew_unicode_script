@@ -6,7 +6,13 @@ pub use self::script::*;
 
 pub mod script {
     use crate::is_apf_block;
+    use crate::is_apf_consonant;
+    use crate::is_apf_ligature_yiddisch;
+    use crate::is_apf_point_reading_sign;
     use crate::is_hbr_block;
+    use crate::is_hbr_consonant;
+    use crate::is_hbr_ligature_yiddish;
+    use crate::is_hbr_point;
     /// Checks if the given character belongs to the unicode script 'Hebrew'.
     ///
     /// # Example
@@ -21,6 +27,69 @@ pub mod script {
     /// ```
     pub fn is_hbr_script(c: char) -> bool {
         is_hbr_block(c) || is_apf_block(c)
+    }
+    /// Checks if the given character is a 'point' type within the unicode script 'Hebrew'.
+    ///
+    /// # Example
+    ///
+    /// ```
+    /// use hebrew_unicode_script::is_hbr_script_point;
+    ///
+    /// let test_str = "מָ";
+    /// for (position, c) in test_str.chars().enumerate() {
+    ///   let position_u8 = u8::try_from(position).unwrap();
+    ///   if position_u8 % 2 == 0 {
+    ///     // even position is a normal letter (non-vowel-point)
+    ///     assert!(!is_hbr_script_point(c));
+    ///   } else {
+    ///     assert!(is_hbr_script_point(c));
+    ///   }
+    /// }
+    /// let reading_sign = '\u{FB1E}';
+    /// assert!(is_hbr_script_point(reading_sign));
+    /// ```
+    pub fn is_hbr_script_point(c: char) -> bool {
+        is_hbr_point(c) || is_apf_point_reading_sign(c)
+    }
+
+    // todo!()
+    ///
+
+    /// Checks if the given character is a 'consonant' type within the unicode script 'Hebrew'.
+    ///
+    /// # Example
+    ///
+    /// ```
+    /// use hebrew_unicode_script::is_hbr_script_consonant;
+    ///
+    /// let test_str = "אבגדהוזחטיכךלמםנןסעפףצץקרשת";
+    /// for c in test_str.chars() {
+    ///   assert!(is_hbr_script_consonant(c));
+    /// }
+    /// let afp_alternative = '\u{FB20}';
+    /// assert!(is_hbr_script_consonant(afp_alternative));
+    ///
+    /// ```
+    pub fn is_hbr_script_consonant(c: char) -> bool {
+        is_hbr_consonant(c) || is_apf_consonant(c)
+    }
+
+    /// Checks if the given character is a 'ligature_yiddisch' type within the unicode script 'Hebrew'.
+    ///
+    /// # Example
+    ///
+    /// ```
+    /// use hebrew_unicode_script::is_hbr_script_ligature_yiddisch;
+    ///
+    ///let test_str = "װױײ";
+    /// for c in test_str.chars() {
+    ///   assert!(is_hbr_script_ligature_yiddisch(c));
+    /// }
+    /// let liga_yiddish = '\u{FB1F}';
+    /// assert!(is_hbr_script_ligature_yiddisch(liga_yiddish));
+    /// ```
+    pub fn is_hbr_script_ligature_yiddisch(c: char) -> bool {
+        is_hbr_ligature_yiddish(c) || is_apf_ligature_yiddisch(c)
     }
 }
 
@@ -461,6 +530,42 @@ pub mod apf_block {
 #[cfg(test)]
 mod test_function {
     use super::*;
+
+    #[test]
+    fn test_hebrew_script_point() {
+        let test_str = "מָ";
+        for (position, c) in test_str.chars().enumerate() {
+            let position_u8 = u8::try_from(position).unwrap();
+            if position_u8 % 2 == 0 {
+                // even position is a normal letter (non-vowel-point)
+                assert!(!is_hbr_script_point(c));
+            } else {
+                assert!(is_hbr_script_point(c));
+            }
+        }
+        let reading_sign = '\u{FB1E}';
+        assert!(is_hbr_script_point(reading_sign));
+    }
+
+    #[test]
+    fn test_hebrew_script_consonant() {
+        let test_str = "אבגדהוזחטיכךלמםנןסעפףצץקרשת";
+        for c in test_str.chars() {
+            assert!(is_hbr_script_consonant(c));
+        }
+        let afp_alternative = '\u{FB20}';
+        assert!(is_hbr_script_consonant(afp_alternative));
+    }
+
+    #[test]
+    fn test_hebrew_script_ligature_yiddisch() {
+        let test_str = "װױײ";
+        for c in test_str.chars() {
+            assert!(is_hbr_script_ligature_yiddisch(c));
+        }
+        let liga_yiddish = '\u{FB1F}';
+        assert!(is_hbr_script_ligature_yiddisch(liga_yiddish));
+    }
 
     #[test]
     fn test_hebrew_script() {

@@ -27,6 +27,9 @@ Each function in this library returns a boolean value, making it easy to integra
 ```text
 For unicode script (top level):
   - is_hbr_script(c: char) -> bool
+  - is_hbr_script_point(c: char) -> bool
+  - is_hbr_script_consonant(c: char) -> bool
+  - is_hbr_script_ligature_yiddisch(c: char) -> bool
 
 For unicode block: 'Hebrew': 
   - is_hbr_accent(c: char) -> bool
