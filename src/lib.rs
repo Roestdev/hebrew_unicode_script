@@ -7,7 +7,6 @@ pub use self::script::*;
 pub mod script {
     use crate::is_apf_block;
     use crate::is_hbr_block;
-
     /// Checks if the given character belongs to the unicode script 'Hebrew'.
     ///
     /// # Example
@@ -21,11 +20,7 @@ pub mod script {
     /// assert!(!is_hbr_script(non_hbr_ch));
     /// ```
     pub fn is_hbr_script(c: char) -> bool {
-        match c {
-            c if is_hbr_block(c) => true,
-            c if is_apf_block(c) => true,
-            _ => false,
-        }
+        is_hbr_block(c) || is_apf_block(c)
     }
 }
 
@@ -42,25 +37,20 @@ pub mod hebrew_block {
     /// }
     /// ```
     pub fn is_hbr_block(c: char) -> bool {
-        match c {
-            c if is_hbr_accent(c) => true,
-            c if is_hbr_mark(c) => true,
-            c if is_hbr_point(c) => true,
-            c if is_hbr_punctuation(c) => true,
-            c if is_hbr_consonant(c) => true,
-            c if is_hbr_yod_triangle(c) => true,
-            c if is_hbr_ligature_yiddish(c) => true,
-            _ => false,
-        }
+        is_hbr_accent(c)
+            || is_hbr_mark(c)
+            || is_hbr_point(c)
+            || is_hbr_punctuation(c)
+            || is_hbr_consonant(c)
+            || is_hbr_yod_triangle(c)
+            || is_hbr_ligature_yiddish(c)
     }
-
     /// Checks if the given character is a Hebrew acccent.
     ///
     /// # Example
     ///
     /// ```
     /// use hebrew_unicode_script::is_hbr_accent;
-
     ///
     /// let test_str = "ב֑";
     /// for (position, c) in test_str.chars().enumerate() {
@@ -76,7 +66,6 @@ pub mod hebrew_block {
     pub fn is_hbr_accent(c: char) -> bool {
         matches!(c, '\u{0591}'..='\u{05AE}')
     }
-
     /// Checks if the given character is a Hebrew mark.
     ///
     /// # Example
@@ -100,14 +89,12 @@ pub mod hebrew_block {
         // 05AF + 05C4 + 05C5
         matches!(c, '\u{05AF}' | '\u{05C4}' | '\u{05C5}')
     }
-
     /// Checks if the given character is a Hebrew point
     ///
     /// # Example
     ///
     /// ```
     /// use hebrew_unicode_script::*;
-
     ///
     /// let test_str = "מָ";
     /// for (position, c) in test_str.chars().enumerate() {
@@ -122,13 +109,6 @@ pub mod hebrew_block {
     /// ```
     pub fn is_hbr_point(c: char) -> bool {
         is_hbr_point_vowel(c) || is_hbr_point_semi_vowel(c) || is_hbr_point_reading_sign(c)
-        // match c {
-        //     c if is_hbr_point_vowel(c) => true,
-        //     c if is_hbr_point_semi_vowel(c) => true,
-        //     c if is_hbr_point_reading_sign(c) => true,
-
-        //     _ => false,
-        // }
     }
     /// Checks if the given character is a Hebrew vowel
     ///
@@ -136,7 +116,6 @@ pub mod hebrew_block {
     ///
     /// ```
     /// use hebrew_unicode_script::is_hbr_point_vowel;
-
     ///
     /// let test_str = "מָ";
     /// for (position, c) in test_str.chars().enumerate() {
@@ -159,7 +138,6 @@ pub mod hebrew_block {
     ///
     /// ```
     /// use hebrew_unicode_script::is_hbr_point_semi_vowel;
-
     ///
     /// let test_str = "מְזֱלֲשֳ";
     /// for (position, c) in test_str.chars().enumerate() {
@@ -182,7 +160,6 @@ pub mod hebrew_block {
     ///
     /// ```
     /// use hebrew_unicode_script::is_hbr_point_reading_sign;
-
     ///
     /// //let test_str = "ׁהּשׂש";
     /// let test_str = "שׁהּשׂ";
@@ -210,9 +187,7 @@ pub mod hebrew_block {
     ///
     /// ```
     /// use hebrew_unicode_script::is_hbr_punctuation;
-
     ///
-    /// //let test_str = "ב֯";
     /// let test_str = "א־ר׃";
     /// for (position, c) in test_str.chars().enumerate() {
     ///   let position_u8 = u8::try_from(position).unwrap();
@@ -238,7 +213,6 @@ pub mod hebrew_block {
     ///
     /// ```
     /// use hebrew_unicode_script::is_hbr_consonant;
-
     ///
     /// let test_str = "אבגדהוזחטיכךלמםנןסעפףצץקרשת";
     /// for c in test_str.chars() {
@@ -251,14 +225,8 @@ pub mod hebrew_block {
     /// }
     /// ```
     pub fn is_hbr_consonant(c: char) -> bool {
-        is_hbr_consonant_normal(c) || is_hbr_consonant_final(c) 
-        // match c {
-        //     c if is_hbr_consonant_normal(c) => true,
-        //     c if is_hbr_consonant_final(c) => true,
-        //     _ => false,
-        // }
+        is_hbr_consonant_normal(c) || is_hbr_consonant_final(c)
     }
-
     /// Checks if the given character is a normal Hebrew consonant
     ///
     /// # Example
@@ -306,7 +274,6 @@ pub mod hebrew_block {
             '\u{05DA}' | '\u{05DD}' | '\u{05DF}' | '\u{05E3}' | '\u{05E5}'
         )
     }
-
     /// Checks if the given character is a Hebrew yod triangle.
     ///
     /// # Example
@@ -359,13 +326,10 @@ pub mod apf_block {
     /// assert!(!is_apf_block(non_apf_ch));
     /// ```
     pub fn is_apf_block(c: char) -> bool {
-        match c {
-            c if is_apf_point_reading_sign(c) => true,
-            c if is_apf_consonant(c) => true,
-            c if is_apf_ligature_yiddisch(c) => true,
-            c if is_apf_ligature(c) => true,
-            _ => false,
-        }
+        is_apf_point_reading_sign(c)
+            || is_apf_consonant(c)
+            || is_apf_ligature_yiddisch(c)
+            || is_apf_ligature(c)
     }
     /// Checks if the given character is an AFP point.
     ///
@@ -395,20 +359,10 @@ pub mod apf_block {
     /// assert!(!is_apf_consonant(afp_l));
     /// ```
     pub fn is_apf_consonant(c: char) -> bool {
-        // An apf consonant can be any of the following:
-        //  - an alternative consonant
-        //  - a wide consonant
-        //  - a consonant with a vowel
-        
-        is_apf_consonant_alternative(c) || is_apf_consonant_wide(c) || is_apf_consonant_with_vowel(c)
-        // match c {
-        //     c if is_apf_consonant_alternative(c) => true,
-        //     c if is_apf_consonant_wide(c) => true,
-        //     c if is_apf_consonant_with_vowel(c) => true,
-        //     _ => false,
-        // }
+        is_apf_consonant_alternative(c)
+            || is_apf_consonant_wide(c)
+            || is_apf_consonant_with_vowel(c)
     }
-
     /// Checks if the given character is an AFP an alternative letter.
     ///
     /// # Example
@@ -426,7 +380,6 @@ pub mod apf_block {
         // U+FB20  + U+FB29
         matches!(c, '\u{FB20}' | '\u{FB29}')
     }
-
     /// Checks if the given character is an AFP wide letter.
     ///
     /// # Example
@@ -444,7 +397,6 @@ pub mod apf_block {
         // U+FB21  + U+FB28
         matches!(c, '\u{FB21}'..='\u{FB28}')
     }
-
     /// Checks if the given character is an AFP letter with a vowel
     ///
     /// # Example
@@ -472,7 +424,6 @@ pub mod apf_block {
             | '\u{FB46}'..='\u{FB4E}'
         )
     }
-
     /// Checks if the given character is a AFP Yiddish ligature.
     ///
     /// # Example
@@ -512,7 +463,7 @@ pub mod apf_block {
 }
 
 #[cfg(test)]
-mod tests {
+mod test_function {
     use super::*;
 
     #[test]
