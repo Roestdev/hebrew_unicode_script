@@ -17,6 +17,7 @@ jobs:
       matrix:
         toolchain:
           - stable
+          - v1.76
           - beta
           - nightly
 
