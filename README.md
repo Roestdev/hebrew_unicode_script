@@ -80,7 +80,7 @@ Run the following Cargo command in your project directory:
 
 **OR** add the following line to your Cargo.toml under **dependencies**
 
-`hebrew_unicode_script = "0.2.0`
+`hebrew_unicode_script = "0.3.0`
 
 See crates.io for the latest version!
 
@@ -228,7 +228,7 @@ All functions return either true *or* false.
 Current code coverage is *100%* [^code coverage]
 [^code coverage]: The code coverage figures shown in crates.io are (very) different! I don't know why :-) (WIP)
 
-![Code Coverage](images/Code_Coverage_20240716_152021.png)
+![Code Coverage](doc/images/Code_Coverage_20240716_152021.png)
 
 
 I used [code coverage, running locally](https://blog.rng0.io/how-to-do-code-coverage-in-rust/#running-locally)
