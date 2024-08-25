@@ -9,6 +9,7 @@
   - [References ](#references-)
     - [Unicode Script](#unicode-script)
     - [Unicode Block Names](#unicode-block-names)
+    - [Unicode Problems for Hebrew](#unicode-problems-for-hebrew)
   - [Safety ](#safety-)
   - [Panics ](#panics-)
   - [Errors ](#errors-)
@@ -200,6 +201,9 @@ See the crate modules for more examples.
 
 Learn more about [Unicode](https://www.unicode.org/), [Unicode scripts](https://www.unicode.org/standard/supported.html) and [Unicode code point blocks](https://www.unicode.org/Public/UCD/latest/ucd/Blocks.txt)
 
+### Unicode Problems for Hebrew
+
+There are some issues with unicode and Hebrew. These are described in [Unicode Problems](https://mechon-mamre.org/c/hr/unicode.htm)   
 
 [^ TOC](#toc)
 
