@@ -38,6 +38,8 @@ For both of the applicable *unicode code blocks* there are some additional funct
 
 Each function in this library returns a boolean value, making it easy to integrate these checks into existing or new applications.
 
+For an overview of released versions see [releases](https://github.com/Roestdev/hebrew_unicode_script/releases).
+
 ### Function overview
 
 #### Unicode script 'Hebrew' (top level):
@@ -95,7 +97,7 @@ Each function in this library returns a boolean value, making it easy to integra
   - Vowels (code points: *U+05B4 .. U+05BB, U+05C7*)
   - Semi-Vowels (code points: U+05B0 .. U+05B3)  
   - Reading Signs (code points: *U+05BC .. U+05C2*) [^judeo-spanish]
-  [^judeo-spanish]: For me it not yet clear if the 'HEBREW POINT JUDEO-SPANISH VARIKA' a reading sign or not.
+  [^judeo-spanish]: For me it not clear yet if the 'HEBREW POINT JUDEO-SPANISH VARIKA' a reading sign or not.
 
 - Hebrew **letters** can be subdivided in:
   - Normal consonants (code points: *U+05D0 .. U+05D9, U+05DB, U+05DC, U+05DE, U+05E0 .. U+05E2, U+05E4, U+05E6 .. U+05EA*)
