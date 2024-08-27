@@ -305,7 +305,7 @@ All (trait)functions return either true *or* false.
 Current code coverage is *100%* [^code coverage]
 [^code coverage]: The code coverage figures shown in crates.io are (very) different!
 
-![Code Coverage](doc/images/Code_Coverage_20240716_152021.png)
+![Code Coverage](doc/images/Code_Coverage_20240827_09-44.png)
 
 
 I used [code coverage, running locally](https://blog.rng0.io/how-to-do-code-coverage-in-rust/#running-locally)
