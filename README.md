@@ -3,9 +3,15 @@
 - [Hebrew\_Unicode\_Script](#hebrew_unicode_script)
   - [Table of contents ](#table-of-contents-)
   - [Description ](#description-)
+    - [Function overview](#function-overview)
+      - [Unicode script 'Hebrew' (top level):](#unicode-script-hebrew-top-level)
+      - [Unicode block: 'Hebrew'](#unicode-block-hebrew)
+      - [Unicode block: 'Alphabetic Presentation Form'](#unicode-block-alphabetic-presentation-form)
     - [Notes](#notes)
   - [Install ](#install-)
   - [Examples ](#examples-)
+    - [Using the function API](#using-the-function-api)
+    - [Using the trait API](#using-the-trait-api)
   - [References ](#references-)
     - [Unicode Script](#unicode-script)
     - [Unicode Block Names](#unicode-block-names)
@@ -20,49 +26,76 @@
 
 ## Description <a name="description"></a>
 
-This crate (*hebrew_unicode_script*) is a Rust library designed to facilitate the identification and validation of Unicode characters related to the Hebrew script and its associated blocks.   
-This library provides a set of functions that allow developers to easily determine whether a particular character belongs to the *Hebrew unicode script*, falls within the *Hebrew unicode code block* or matches the *Alphabetic Presentation Form* unicode code block.   
-For each of the applicable *unicode code blocks* there are some additional functions, allowing an even more sophisticated check for the *character type* within each code block. Examples include vowels, accents, marks, etc. etc.  
+This crate (*hebrew_unicode_script*) is a low level library written in Rust and designed to facilitate the identification and validation of Unicode characters related to the Hebrew script and its associated unicode code blocks.   
+
+This library provides *two* types of interface:
+ 1. **functions**
+ 2. **trait** (the same functions behind one trait)
+
+The given set of functions (either direct of via a trait) allow developers to easily determine whether a particular character belongs to the *Hebrew unicode script*, falls within the *Hebrew unicode code block* or matches the *Alphabetic Presentation Form* unicode code block.   
+
+For both of the applicable *unicode code blocks* there are some additional functions, allowing an even more refined check for the *character type* within each code block. Examples include vowels, accents, marks, etc.  
+
 Each function in this library returns a boolean value, making it easy to integrate these checks into existing or new applications.
 
-```text
-For unicode script (top level):
-  - is_hbr_script(c: char) -> bool
-  - is_hbr_script_point(c: char) -> bool
-  - is_hbr_script_consonant(c: char) -> bool
-  - is_hbr_script_ligature_yiddisch(c: char) -> bool
+### Function overview
 
-For unicode block: 'Hebrew': 
+#### Unicode script 'Hebrew' (top level):
+
+``` sh
+  - is_script_hbr(c: char) -> bool
+  - is_script_hbr_point(c: char) -> bool
+  - is_script_hbr_consonant(c: char) -> bool
+  - is_script_hbr_ligature_yiddisch(c: char) -> bool
+```
+
+#### Unicode block: 'Hebrew' 
+
+2nd level:
+``` sh
   - is_hbr_accent(c: char) -> bool
   - is_hbr_mark(c: char) -> bool
   - is_hbr_point(c: char) -> bool
+  - is_hbr_punctuation(c: char) -> bool
+  - is_hbr_consonant(c: char) -> bool
+  - is_hbr_yod_triangle(c: char) -> bool
+  - is_hbr_ligature_yiddish(c: char) -> bool
+```
+
+3rd level:
+``` sh
     - is_hbr_point_vowel(c) -> bool
     - is_hbr_point_semi_vowel(c) -> bool
     - is_hbr_point_reading_sign(c) -> bool
-  - is_hbr_punctuation(c: char) -> bool
-  - is_hbr_consonant(c: char) -> bool
     - is_hbr_consonant_normal(c: char) -> bool
     - is_hbr_consonant_final(c: char) -> bool
-  - is_hbr_yod_triangle(c: char) -> bool
-  - is_hbr_ligature_yiddish(c: char) -> bool
+```
 
-For unicode block: 'Alphabetic Presentation Form':
+#### Unicode block: 'Alphabetic Presentation Form'
+
+2nd level:
+``` sh
   - is_apf_block(c: char) -> bool
   - is_apf_point_reading_sign(c: char) -> bool
   - is_apf_consonant(c: char) -> bool
-    - is_apf_consonant_alternative(c: char) -> bool
-    - is_apf_consonant_wide(c: char) -> bool
-    - is_apf_consonant_with_vowel(c: char) -> bool
   - is_apf_ligature_yiddisch(c: char) -> bool
   - is_apf_ligature(c: char) -> bool
 ```
 
+3rd level:
+``` sh
+    - is_apf_consonant_alternative(c: char) -> bool
+    - is_apf_consonant_wide(c: char) -> bool
+    - is_apf_consonant_with_vowel(c: char) -> bool
+```
+
 ### Notes
+
 - Hebrew **points** can be subdivided in:
   - Vowels (code points: *U+05B4 .. U+05BB, U+05C7*)
   - Semi-Vowels (code points: U+05B0 .. U+05B3)  
-  - Reading Signs (code points: *U+05BC .. U+05C2*) ^judeo-spanish
-  [^judeo-spanish]: I don't know if the HEBREW POINT JUDEO-SPANISH VARIKA a reading sign!
+  - Reading Signs (code points: *U+05BC .. U+05C2*) [^judeo-spanish]
+  [^judeo-spanish]: For me it not yet clear if the 'HEBREW POINT JUDEO-SPANISH VARIKA' a reading sign or not.
 
 - Hebrew **letters** can be subdivided in:
   - Normal consonants (code points: *U+05D0 .. U+05D9, U+05DB, U+05DC, U+05DE, U+05E0 .. U+05E2, U+05E4, U+05E6 .. U+05EA*)
@@ -81,18 +114,26 @@ Run the following Cargo command in your project directory:
 
 **OR** add the following line to your Cargo.toml under **dependencies**
 
-`hebrew_unicode_script = "0.3.0`
+`hebrew_unicode_script = "0.4.0`
 
 See crates.io for the latest version!
 
+[^ TOC](#toc)
+
 ## Examples <a name="examples"></a>
+
+### Using the function API
+
+Basic usage:
 
 ```rust
 use hebrew_unicode_script::is_hbr_block;
+
 if is_hbr_block('מ') {
 	println!("The character you entered is part of the 'unicode code block Hebrew'");
 }
 ```
+
 ```rust
 use hebrew_unicode_script::{is_hbr_consonant_final, is_hbr_consonant};
 
@@ -103,6 +144,7 @@ for c in test_str.chars() {
 }
 ```
 
+A more complex example:
 ```rust
 use hebrew_unicode_script::{is_hbr_accent,is_hbr_mark, is_hbr_point, is_hbr_punctuation};
 use hebrew_unicode_script::{is_hbr_consonant_final,is_hbr_yod_triangle,is_hbr_ligature_yiddish};
@@ -161,7 +203,7 @@ pub fn get_character_types(s: &str) -> HebrewCharacterTypes {
 
 *Output result:*
    
-``` text
+``` txt
 The following character types were found:
 HebrewCharacterTypes {
     accent: true,
@@ -177,8 +219,40 @@ HebrewCharacterTypes {
     non_hebrew: true,
 }
 ```
-See the crate modules for more examples.
 
+### Using the trait API
+
+```
+use hebrew_unicode_script::HebrewUnicodeScript;
+
+assert!( 'מ'.is_script_hbr() );
+assert!( !'מ'.is_script_hbr_point() );
+assert!( 'מ'.is_script_hbr_consonant() );
+assert!( 'ױ'.is_script_hbr_ligature_yiddisch() );
+assert!( 'מ'.is_hbr_block() );
+assert!( !'מ'.is_hbr_accent() );
+assert!( !'מ'.is_hbr_mark() );
+assert!( !'מ'.is_hbr_point() );
+assert!( !'מ'.is_hbr_point_vowel() );
+assert!( !'מ'.is_hbr_point_semi_vowel() );
+assert!( '\u{05BF}'.is_hbr_point_reading_sign() );
+assert!( '\u{05BE}'.is_hbr_punctuation() );
+assert!( 'ץ'.is_hbr_consonant() );
+assert!( !'ץ'.is_hbr_consonant_normal() );
+assert!( 'ץ'.is_hbr_consonant_final() );
+assert!( '\u{05EF}'.is_hbr_yod_triangle() );
+assert!( !'מ'.is_hbr_ligature_yiddish() );
+assert!( !'מ'.is_apf_block() );
+assert!( !'מ'.is_apf_point_reading_sign() );
+assert!( !'מ'.is_apf_consonant() );
+assert!( !'מ'.is_apf_consonant_alternative() );
+assert!( !'מ'.is_apf_consonant_wide() );
+assert!( !'מ'.is_apf_consonant_with_vowel() );
+assert!( !'מ'.is_apf_ligature_yiddisch() );
+assert!( !'מ'.is_apf_ligature() );
+```
+
+See the crate modules for more examples.
 
 [^ TOC](#toc)
 
@@ -203,7 +277,7 @@ Learn more about [Unicode](https://www.unicode.org/), [Unicode scripts](https://
 
 ### Unicode Problems for Hebrew
 
-There are some issues with unicode and Hebrew. These are described in [Unicode Problems](https://mechon-mamre.org/c/hr/unicode.htm)   
+There are some issues with unicode and Hebrew. These are described on the following web page: [Unicode Problems](https://mechon-mamre.org/c/hr/unicode.htm)  
 
 [^ TOC](#toc)
 
@@ -222,15 +296,14 @@ Not that I am aware of.
 
 ## Errors <a name="errors"></a>
 
-All functions return either true *or* false.
-
+All (trait)functions return either true *or* false.
 
 [^ TOC](#toc)
 
 ## Code Coverage <a name="codecoverage"></a>
 
 Current code coverage is *100%* [^code coverage]
-[^code coverage]: The code coverage figures shown in crates.io are (very) different! I don't know why :-) (WIP)
+[^code coverage]: The code coverage figures shown in crates.io are (very) different!
 
 ![Code Coverage](doc/images/Code_Coverage_20240716_152021.png)
 
@@ -239,7 +312,7 @@ I used [code coverage, running locally](https://blog.rng0.io/how-to-do-code-cove
 
 Actions:
 1. Install the extension [Coverage Gutters](https://github.com/ryanluker/vscode-coverage-gutters)
-2. Execute: `cargo clean && cargo build && cargo test && mkdir -p target/coverage/html`
+2. Execute: `cargo clean && mkdir -p target/coverage/html`
 3. Execute: `CARGO_INCREMENTAL=0 RUSTFLAGS='-Cinstrument-coverage' LLVM_PROFILE_FILE='cargo-test-%p-%m.profraw' cargo test`
    - result -> (new file) cargo-test-67187-8558864636421498001_0.profraw (on my system)
 
