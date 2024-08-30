@@ -75,7 +75,7 @@ pub trait HebrewUnicodeScript {
     /// ```
     /// use hebrew_unicode_script::HebrewUnicodeScript;
     ///
-    /// assert!('\u{05B0}'.is_hbr_point_vowel());
+    /// assert!('\u{05BB}'.is_hbr_point_vowel());
     /// ```
     fn is_hbr_point_vowel(&self) -> bool;
     /// Checks if the given character is a Hebrew semi-vowel
