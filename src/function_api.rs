@@ -191,8 +191,8 @@ pub mod unicode_block_hebrew {
     /// }
     /// ```
     pub fn is_hbr_point_vowel(c: char) -> bool {
-        // 05B4 .. 05BBB + 05C7
-        matches!(c, '\u{05B0}'..='\u{05BD}' | '\u{05C7}')
+        // 05B4 .. 05BB + 05C7
+        matches!(c, '\u{05B4}'..='\u{05BB}' | '\u{05C7}')
     }
     /// Checks if the given character is a HBR semi-vowel
     ///
@@ -523,9 +523,22 @@ pub mod unicode_block_alphabetic_presentation_form {
 
 #[cfg(test)]
 mod test_functions {
-    use crate::function_api::unicode_script_hebrew::*;
-    use crate::function_api::unicode_block_hebrew::*;
     use crate::function_api::unicode_block_alphabetic_presentation_form::*;
+    use crate::function_api::unicode_block_hebrew::*;
+    use crate::function_api::unicode_script_hebrew::*;
+
+    // Unicode Script 'Hebrew'
+    #[test]
+    fn test_script_hebrew() {
+        let letter_a = '\u{0041}'; // A
+        assert!(!is_script_hbr(letter_a));
+
+        let letter_aleph = '\u{05D0}'; // א HEBREW LETTER ALEF
+        assert!(is_script_hbr(letter_aleph));
+
+        let letter_aleph = '\u{FB1E}'; // HEBREW POINT JUDEO-SPANISH VARIKA
+        assert!(is_script_hbr(letter_aleph));
+    }
 
     #[test]
     fn test_script_hebrew_point() {
@@ -563,17 +576,7 @@ mod test_functions {
         assert!(is_script_hbr_ligature_yiddisch(liga_yiddish));
     }
 
-    #[test]
-    fn test_script_hebrew() {
-        let letter_a = '\u{0041}'; // A
-        assert!(!is_script_hbr(letter_a));
-
-        let letter_aleph = '\u{05D0}'; // א HEBREW LETTER ALEF
-        assert!(is_script_hbr(letter_aleph));
-
-        let letter_aleph = '\u{FB1E}'; // HEBREW POINT JUDEO-SPANISH VARIKA
-        assert!(is_script_hbr(letter_aleph));
-    }
+    // Unicode Block 'Hebrew'
     #[test]
     fn test_hbr_accent() {
         let test_str1 = "ב֑ב֒ב֓ב֔ב֕ב֖ב֗ב֘ב֙ב֚";
@@ -593,6 +596,18 @@ mod test_functions {
     fn test_hbr_point() {
         let test_str = "בְבֱבֲבֳבִבֵבֶבַבָבֹבֺבֻבּבֽבֿבׁבׂבׇ";
         check_points(&test_str);
+    }
+    #[test]
+    fn test_hbr_point_vowel() {
+        assert!(is_hbr_point_vowel('\u{05B5}'));
+    }
+    #[test]
+    fn test_hbr_point_semi_vowel() {
+        assert!(is_hbr_point_semi_vowel('\u{05B0}'));
+    }
+    #[test]
+    fn test_hbr_point_reading_sign() {
+        assert!(is_hbr_point_reading_sign('\u{05BF}'));
     }
     #[test]
     fn test_hbr_puncuation() {
@@ -634,6 +649,8 @@ mod test_functions {
         let yod_triangle = '\u{05EF}';
         assert!(is_hbr_yod_triangle(yod_triangle));
     }
+
+    // Unicode Block 'Alphabetic Presentation Form'
 
     #[test]
     fn test_apf_point() {
@@ -739,6 +756,7 @@ mod test_functions {
         assert_eq!(is_apf_ligature(test_ch), true);
     }
 
+    // supporting functions
     fn check_accents(str: &str) {
         // str is an alternation of consonant-accent-consonat-accent ...
         for (position, c) in str.chars().enumerate() {
@@ -765,6 +783,18 @@ mod test_functions {
         }
     }
     fn check_points(str: &str) {
+        for (pos, c) in str.chars().enumerate() {
+            let pos_u8 = u8::try_from(pos).unwrap();
+            if pos_u8 % 2 == 0 {
+                //println!("fn check_points::char at even position {} is: {}", pos_u8, c.escape_default());
+                assert!(is_hbr_consonant(c));
+            } else {
+                //println!("fn check_points::char at odd position {} is: {}", pos_u8, c.escape_default());
+                assert!(is_hbr_point(c));
+            }
+        }
+    }
+    fn check_points_vowel(str: &str) {
         for (pos, c) in str.chars().enumerate() {
             let pos_u8 = u8::try_from(pos).unwrap();
             if pos_u8 % 2 == 0 {
