@@ -110,15 +110,7 @@ For an overview of released versions see [releases](https://github.com/Roestdev/
 
 ## Install <a name="install"></a>
 
-Run the following Cargo command in your project directory:
-
-`cargo add hebrew_unicode_script`
-
-**OR** add the following line to your Cargo.toml under **dependencies**
-
-`hebrew_unicode_script = "0.4.0`
-
-See crates.io for the latest version!
+For installation see <https://crates.io/crates/hebrew_unicode_script/>
 
 [^ TOC](#toc)
 
