@@ -794,18 +794,6 @@ mod test_functions {
             }
         }
     }
-    fn check_points_vowel(str: &str) {
-        for (pos, c) in str.chars().enumerate() {
-            let pos_u8 = u8::try_from(pos).unwrap();
-            if pos_u8 % 2 == 0 {
-                //println!("fn check_points::char at even position {} is: {}", pos_u8, c.escape_default());
-                assert!(is_hbr_consonant(c));
-            } else {
-                //println!("fn check_points::char at odd position {} is: {}", pos_u8, c.escape_default());
-                assert!(is_hbr_point(c));
-            }
-        }
-    }
     fn check_punctuations(str: &str) {
         for (pos, c) in str.chars().enumerate() {
             let pos_u8 = u8::try_from(pos).unwrap();
