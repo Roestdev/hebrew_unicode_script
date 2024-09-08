@@ -4,7 +4,7 @@
 ![Crates.io Version](https://img.shields.io/crates/v/hebrew_unicode_script)
 ![docs.rs](https://img.shields.io/docsrs/hebrew_unicode_script)
 [![Build & Test](https://github.com/Roestdev/hebrew_unicode_script/actions/workflows/build_and_test.yml/badge.svg)](https://github.com/Roestdev/hebrew_unicode_script/actions/workflows/build_and_test.yml)
-[![Clippy Analyze](https://github.com/Roestdev/hebrew_unicode_script/actions/workflows/clippy_analyze.yml/badge.svg)](https://github.com/Roestdev/hebrew_unicode_utils/actions/workflows/clippy_analyze.yml)
+[![Clippy Analyze](https://github.com/Roestdev/hebrew_unicode_script/actions/workflows/rust-clippy.yml/badge.svg)](https://github.com/Roestdev/hebrew_unicode_script/actions/workflows/rust-clippy.yml)
 
 ## Table of contents <a name="toc"></a>
 - [Hebrew\_Unicode\_Script](#hebrew_unicode_script)
@@ -15,10 +15,10 @@
       - [Unicode block: 'Hebrew'](#unicode-block-hebrew)
       - [Unicode block: 'Alphabetic Presentation Form'](#unicode-block-alphabetic-presentation-form)
     - [Notes](#notes)
-  - [Install ](#install-)
   - [Examples ](#examples-)
     - [Using the function API](#using-the-function-api)
     - [Using the trait API](#using-the-trait-api)
+  - [Install ](#install-)
   - [References ](#references-)
     - [Unicode Script](#unicode-script)
     - [Unicode Block Names](#unicode-block-names)
@@ -112,12 +112,6 @@ For an overview of released versions see [releases](https://github.com/Roestdev/
   - Wide consonants (code points: *U+FB21 .. U+FB28*)
   - Consonants with vowel (code points: *U+FB2A .. U+FB36, U+FB38 .. U+FB3C, U+FB3E, U+FB40, U+FB41, U+FB43, U+FB44, U+FB46 .. U+FB4E*)
   - Alternative consonants (code points: *U+FB20, U+FB29*)
-
-[^ TOC](#toc)
-
-## Install <a name="install"></a>
-
-For installation see <https://crates.io/crates/hebrew_unicode_script/>
 
 [^ TOC](#toc)
 
@@ -254,6 +248,12 @@ assert!( !'מ'.is_apf_ligature() );
 ```
 
 See the crate modules for more examples.
+
+[^ TOC](#toc)
+
+## Install <a name="install"></a>
+
+For installation see the [hebrew_unicode_script](https://crates.io/crates/hebrew_unicode_script) page at crates.io.
 
 [^ TOC](#toc)
 
