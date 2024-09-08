@@ -97,9 +97,9 @@ For an overview of released versions see [releases](https://github.com/Roestdev/
   - Vowels (code points: *U+05B4 .. U+05BB, U+05C7*)
   - Semi-Vowels (code points: *U+05B0 .. U+05B3*)  
   - Reading Signs (code points: *U+05BC .. U+05BD + U+05BF + U+05C1 .. U+05C2*) [^judeo-spanish]
-  [^judeo-spanish]: For me it not clear yet if the 'HEBREW POINT JUDEO-SPANISH VARIKA' a reading sign or not.
+  [^judeo-spanish]: For me it not clear yet if the 'HEBREW POINT JUDEO-SPANISH VARIKA' a reading sign or not. For the time being this code-point will be part of the *reading signs*
 
-- Hebrew **letters** can be subdivided in:
+- Hebrew **letters** (consonants) can be subdivided in:
   - Normal consonants (code points: *U+05D0 .. U+05D9, U+05DB, U+05DC, U+05DE, U+05E0 .. U+05E2, U+05E4, U+05E6 .. U+05EA*)
   - Final consonants (code points: *U+05DA, U+05DD, U+05DF, U+05E3 and U+05E5*)  
   - Wide consonants (code points: *U+FB21 .. U+FB28*)
