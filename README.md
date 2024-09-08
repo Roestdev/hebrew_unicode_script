@@ -1,4 +1,11 @@
 # Hebrew_Unicode_Script
+
+![Crates.io License](https://img.shields.io/crates/l/hebrew_unicode_script)
+![Crates.io Version](https://img.shields.io/crates/v/hebrew_unicode_script)
+![docs.rs](https://img.shields.io/docsrs/hebrew_unicode_script)
+[![Build & Test](https://github.com/Roestdev/hebrew_unicode_script/actions/workflows/build_and_test.yml/badge.svg)](https://github.com/Roestdev/hebrew_unicode_script/actions/workflows/build_and_test.yml)
+[![Clippy Analyze](https://github.com/Roestdev/hebrew_unicode_script/actions/workflows/clippy_analyze.yml/badge.svg)](https://github.com/Roestdev/hebrew_unicode_utils/actions/workflows/clippy_analyze.yml)
+
 ## Table of contents <a name="toc"></a>
 - [Hebrew\_Unicode\_Script](#hebrew_unicode_script)
   - [Table of contents ](#table-of-contents-)
