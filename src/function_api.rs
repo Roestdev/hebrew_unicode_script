@@ -582,20 +582,20 @@ mod test_functions {
         let test_str1 = "ב֑ב֒ב֓ב֔ב֕ב֖ב֗ב֘ב֙ב֚";
         let test_str2 = "ב֛ב֜ב֝ב֞ב֟ב֠ב֡ב֢ב֣ב֤";
         let test_str3 = "ב֥ב֦ב֧ב֨ב֩ב֪ב֫ב֬ב֭ב֮";
-        check_accents(&test_str1);
-        check_accents(&test_str2);
-        check_accents(&test_str3);
+        check_accents(test_str1);
+        check_accents(test_str2);
+        check_accents(test_str3);
     }
     #[test]
     fn test_hbr_mark() {
         // 05AF + 05C4 + 05C5
         let test_str = "ב֯בׄבׅ";
-        check_marks(&test_str);
+        check_marks(test_str);
     }
     #[test]
     fn test_hbr_point() {
         let test_str = "בְבֱבֲבֳבִבֵבֶבַבָבֹבֺבֻבּבֽבֿבׁבׂבׇ";
-        check_points(&test_str);
+        check_points(test_str);
     }
     #[test]
     fn test_hbr_point_vowel() {
@@ -612,7 +612,7 @@ mod test_functions {
     #[test]
     fn test_hbr_puncuation() {
         let test_str = "ב־ב׀ב׃ב׆ב׳נ״";
-        check_punctuations(&test_str);
+        check_punctuations(test_str);
     }
     #[test]
     fn test_hbr_consonant() {
@@ -657,25 +657,25 @@ mod test_functions {
         let test_ch = '\u{FB1E}'; // HEBREW POINT JUDEO-SPANISH VARIKA
 
         // unicode script 'Hebrew'
-        assert_eq!(is_script_hbr(test_ch), true);
+        assert!(is_script_hbr(test_ch));
 
         // unicode block Hebrew
-        assert_eq!(is_hbr_block(test_ch), false);
-        assert_eq!(is_hbr_accent(test_ch), false);
-        assert_eq!(is_hbr_mark(test_ch), false);
-        assert_eq!(is_hbr_point(test_ch), false);
-        assert_eq!(is_hbr_punctuation(test_ch), false);
-        assert_eq!(is_hbr_consonant_final(test_ch), false);
-        assert_eq!(is_hbr_consonant(test_ch), false);
-        assert_eq!(is_hbr_yod_triangle(test_ch), false);
-        assert_eq!(is_hbr_ligature_yiddish(test_ch), false);
+        assert!(!is_hbr_block(test_ch));
+        assert!(!is_hbr_accent(test_ch));
+        assert!(!is_hbr_mark(test_ch));
+        assert!(!is_hbr_point(test_ch));
+        assert!(!is_hbr_punctuation(test_ch));
+        assert!(!is_hbr_consonant_final(test_ch));
+        assert!(!is_hbr_consonant(test_ch));
+        assert!(!is_hbr_yod_triangle(test_ch));
+        assert!(!is_hbr_ligature_yiddish(test_ch));
 
         // unicode block 'Alphabetic Presentation Form'
-        assert_eq!(is_apf_block(test_ch), true);
-        assert_eq!(is_apf_point_reading_sign(test_ch), true);
-        assert_eq!(is_apf_consonant(test_ch), false);
-        assert_eq!(is_apf_ligature_yiddisch(test_ch), false);
-        assert_eq!(is_apf_ligature(test_ch), false);
+        assert!(is_apf_block(test_ch));
+        assert!(is_apf_point_reading_sign(test_ch));
+        assert!(!is_apf_consonant(test_ch));
+        assert!(!is_apf_ligature_yiddisch(test_ch));
+        assert!(!is_apf_ligature(test_ch));
     }
 
     #[test]
@@ -683,25 +683,25 @@ mod test_functions {
         let test_ch = '\u{FB1D}'; // HEBREW LETTER YOD WITH HIRIQ
 
         // unicode script 'Hebrew'
-        assert_eq!(is_script_hbr(test_ch), true);
+        assert!(is_script_hbr(test_ch));
 
         // unicode block 'Hebrew'
-        assert_eq!(is_hbr_block(test_ch), false);
-        assert_eq!(is_hbr_accent(test_ch), false);
-        assert_eq!(is_hbr_mark(test_ch), false);
-        assert_eq!(is_hbr_point(test_ch), false);
-        assert_eq!(is_hbr_punctuation(test_ch), false);
-        assert_eq!(is_hbr_consonant_final(test_ch), false);
-        assert_eq!(is_hbr_consonant(test_ch), false);
-        assert_eq!(is_hbr_yod_triangle(test_ch), false);
-        assert_eq!(is_hbr_ligature_yiddish(test_ch), false);
+        assert!(!is_hbr_block(test_ch));
+        assert!(!is_hbr_accent(test_ch));
+        assert!(!is_hbr_mark(test_ch));
+        assert!(!is_hbr_point(test_ch));
+        assert!(!is_hbr_punctuation(test_ch));
+        assert!(!is_hbr_consonant_final(test_ch));
+        assert!(!is_hbr_consonant(test_ch));
+        assert!(!is_hbr_yod_triangle(test_ch));
+        assert!(!is_hbr_ligature_yiddish(test_ch));
 
         // unicode block 'Alphabetic Presentation Form'
-        assert_eq!(is_apf_block(test_ch), true);
-        assert_eq!(is_apf_point_reading_sign(test_ch), false);
-        assert_eq!(is_apf_consonant(test_ch), true);
-        assert_eq!(is_apf_ligature_yiddisch(test_ch), false);
-        assert_eq!(is_apf_ligature(test_ch), false);
+        assert!(is_apf_block(test_ch));
+        assert!(!is_apf_point_reading_sign(test_ch));
+        assert!(is_apf_consonant(test_ch));
+        assert!(!is_apf_ligature_yiddisch(test_ch));
+        assert!(!is_apf_ligature(test_ch));
     }
 
     #[test]
@@ -709,25 +709,24 @@ mod test_functions {
         let test_ch = '\u{FB1F}'; // HEBREW LIGATURE YIDDISH YOD YOD PATAH
 
         // unicode script 'Hebrew'
-        assert_eq!(is_script_hbr(test_ch), true);
-
+        assert!(is_script_hbr(test_ch));
         // unicode block 'Hebrew'
-        assert_eq!(is_hbr_block(test_ch), false);
-        assert_eq!(is_hbr_accent(test_ch), false);
-        assert_eq!(is_hbr_mark(test_ch), false);
-        assert_eq!(is_hbr_point(test_ch), false);
-        assert_eq!(is_hbr_punctuation(test_ch), false);
-        assert_eq!(is_hbr_consonant_final(test_ch), false);
-        assert_eq!(is_hbr_consonant(test_ch), false);
-        assert_eq!(is_hbr_yod_triangle(test_ch), false);
-        assert_eq!(is_hbr_ligature_yiddish(test_ch), false);
+        assert!(!is_hbr_block(test_ch));
+        assert!(!is_hbr_accent(test_ch));
+        assert!(!is_hbr_mark(test_ch));
+        assert!(!is_hbr_point(test_ch));
+        assert!(!is_hbr_punctuation(test_ch));
+        assert!(!is_hbr_consonant_final(test_ch));
+        assert!(!is_hbr_consonant(test_ch));
+        assert!(!is_hbr_yod_triangle(test_ch));
+        assert!(!is_hbr_ligature_yiddish(test_ch));
 
         // unicode block 'Alphabetic Presentation Form'
-        assert_eq!(is_apf_block(test_ch), true);
-        assert_eq!(is_apf_point_reading_sign(test_ch), false);
-        assert_eq!(is_apf_consonant(test_ch), false);
-        assert_eq!(is_apf_ligature_yiddisch(test_ch), true);
-        assert_eq!(is_apf_ligature(test_ch), false);
+        assert!(is_apf_block(test_ch));
+        assert!(!is_apf_point_reading_sign(test_ch));
+        assert!(!is_apf_consonant(test_ch));
+        assert!(is_apf_ligature_yiddisch(test_ch));
+        assert!(!is_apf_ligature(test_ch));
     }
 
     #[test]
@@ -735,25 +734,25 @@ mod test_functions {
         let test_ch = '\u{FB4F}'; // HEBREW LETTER WIDE DALET
 
         // unicode script 'Hebrew'
-        assert_eq!(is_script_hbr(test_ch), true);
+        assert!(is_script_hbr(test_ch));
 
         // unicode block 'Hebrew'
-        assert_eq!(is_hbr_block(test_ch), false);
-        assert_eq!(is_hbr_accent(test_ch), false);
-        assert_eq!(is_hbr_mark(test_ch), false);
-        assert_eq!(is_hbr_point(test_ch), false);
-        assert_eq!(is_hbr_punctuation(test_ch), false);
-        assert_eq!(is_hbr_consonant_final(test_ch), false);
-        assert_eq!(is_hbr_consonant(test_ch), false);
-        assert_eq!(is_hbr_yod_triangle(test_ch), false);
-        assert_eq!(is_hbr_ligature_yiddish(test_ch), false);
+        assert!(!is_hbr_block(test_ch));
+        assert!(!is_hbr_accent(test_ch));
+        assert!(!is_hbr_mark(test_ch));
+        assert!(!is_hbr_point(test_ch));
+        assert!(!is_hbr_punctuation(test_ch));
+        assert!(!is_hbr_consonant_final(test_ch));
+        assert!(!is_hbr_consonant(test_ch));
+        assert!(!is_hbr_yod_triangle(test_ch));
+        assert!(!is_hbr_ligature_yiddish(test_ch));
 
         // unicode block 'Alphabetic Presentation Form'
-        assert_eq!(is_apf_block(test_ch), true);
-        assert_eq!(is_apf_point_reading_sign(test_ch), false);
-        assert_eq!(is_apf_consonant(test_ch), false);
-        assert_eq!(is_apf_ligature_yiddisch(test_ch), false);
-        assert_eq!(is_apf_ligature(test_ch), true);
+        assert!(is_apf_block(test_ch));
+        assert!(!is_apf_point_reading_sign(test_ch));
+        assert!(!is_apf_consonant(test_ch));
+        assert!(!is_apf_ligature_yiddisch(test_ch));
+        assert!(is_apf_ligature(test_ch));
     }
 
     // supporting functions
