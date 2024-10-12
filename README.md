@@ -1,7 +1,7 @@
 # Hebrew_Unicode_Script
-
 ![Crates.io License](https://img.shields.io/crates/l/hebrew_unicode_script)
 ![Crates.io Version](https://img.shields.io/crates/v/hebrew_unicode_script)
+![Static Badge](https://img.shields.io/badge/no--std-yes-00FFFF)
 ![docs.rs](https://img.shields.io/docsrs/hebrew_unicode_script)
 [![Build & Test](https://github.com/Roestdev/hebrew_unicode_script/actions/workflows/build_and_test.yml/badge.svg)](https://github.com/Roestdev/hebrew_unicode_script/actions/workflows/build_and_test.yml)
 [![Clippy Analyze](https://github.com/Roestdev/hebrew_unicode_script/actions/workflows/rust-clippy.yml/badge.svg)](https://github.com/Roestdev/hebrew_unicode_script/actions/workflows/rust-clippy.yml)
@@ -10,14 +10,14 @@
 - [Hebrew\_Unicode\_Script](#hebrew_unicode_script)
   - [Table of contents ](#table-of-contents-)
   - [Description ](#description-)
-    - [Function overview](#function-overview)
-      - [Unicode script 'Hebrew' (top level):](#unicode-script-hebrew-top-level)
-      - [Unicode block: 'Hebrew'](#unicode-block-hebrew)
-      - [Unicode block: 'Alphabetic Presentation Form'](#unicode-block-alphabetic-presentation-form)
-    - [Notes](#notes)
+  - [Function overview](#function-overview)
+    - [Unicode script 'Hebrew' (top level):](#unicode-script-hebrew-top-level)
+    - [Unicode block: 'Hebrew'](#unicode-block-hebrew)
+    - [Unicode block: 'Alphabetic Presentation Form'](#unicode-block-alphabetic-presentation-form)
   - [Examples ](#examples-)
     - [Using the function API](#using-the-function-api)
     - [Using the trait API](#using-the-trait-api)
+  - [no\_std](#no_std)
   - [Install ](#install-)
   - [References ](#references-)
     - [Unicode Script](#unicode-script)
@@ -29,11 +29,12 @@
   - [Code Coverage ](#code-coverage-)
   - [License ](#license-)
   - [Contribution ](#contribution-)
+  - [Notes](#notes)
 
 
 ## Description <a name="description"></a>
 
-This crate (*hebrew_unicode_script*) is a low level library written in Rust and designed to facilitate the identification and validation of Unicode characters related to the Hebrew script and its associated unicode code blocks.   
+This crate (`hebrew_unicode_script`) is a low level library written in Rust and designed to facilitate the identification and validation of Unicode characters related to the Hebrew script and its associated unicode code blocks.   
 
 This library provides *two* types of interface:
  1. **functions**
@@ -47,9 +48,9 @@ Each function in this library returns a boolean value, making it easy to integra
 
 For an overview of released versions see [releases](https://github.com/Roestdev/hebrew_unicode_script/releases).
 
-### Function overview
+## Function overview
 
-#### Unicode script 'Hebrew' (top level):
+### Unicode script 'Hebrew' (top level):
 
 ``` sh
   - is_script_hbr(c: char) -> bool
@@ -58,7 +59,7 @@ For an overview of released versions see [releases](https://github.com/Roestdev/
   - is_script_hbr_ligature_yiddisch(c: char) -> bool
 ```
 
-#### Unicode block: 'Hebrew' 
+### Unicode block: 'Hebrew' 
 
 2nd level:
 ``` sh
@@ -80,7 +81,7 @@ For an overview of released versions see [releases](https://github.com/Roestdev/
     - is_hbr_consonant_final(c: char) -> bool
 ```
 
-#### Unicode block: 'Alphabetic Presentation Form'
+### Unicode block: 'Alphabetic Presentation Form'
 
 2nd level:
 ``` sh
@@ -97,23 +98,6 @@ For an overview of released versions see [releases](https://github.com/Roestdev/
     - is_apf_consonant_wide(c: char) -> bool
     - is_apf_consonant_with_vowel(c: char) -> bool
 ```
-
-### Notes
-
-- Hebrew **points** can be subdivided in:
-  - Vowels (code points: *U+05B4 .. U+05BB, U+05C7*)
-  - Semi-Vowels (code points: *U+05B0 .. U+05B3*)  
-  - Reading Signs (code points: *U+05BC .. U+05BD + U+05BF + U+05C1 .. U+05C2*) [^judeo-spanish]
-  [^judeo-spanish]: For me it not clear yet if the 'HEBREW POINT JUDEO-SPANISH VARIKA' a reading sign or not. For the time being this code-point will be part of the *reading signs*
-
-- Hebrew **letters** (consonants) can be subdivided in:
-  - Normal consonants (code points: *U+05D0 .. U+05D9, U+05DB, U+05DC, U+05DE, U+05E0 .. U+05E2, U+05E4, U+05E6 .. U+05EA*)
-  - Final consonants (code points: *U+05DA, U+05DD, U+05DF, U+05E3 and U+05E5*)  
-  - Wide consonants (code points: *U+FB21 .. U+FB28*)
-  - Consonants with vowel (code points: *U+FB2A .. U+FB36, U+FB38 .. U+FB3C, U+FB3E, U+FB40, U+FB41, U+FB43, U+FB44, U+FB46 .. U+FB4E*)
-  - Alternative consonants (code points: *U+FB20, U+FB29*)
-
-[^ TOC](#toc)
 
 ## Examples <a name="examples"></a>
 
@@ -249,6 +233,10 @@ assert!( !'מ'.is_apf_ligature() );
 
 See the crate modules for more examples.
 
+## no_std
+
+`hebrew_unicode_script` does not depend on a standard library, nor a system allocator.
+
 [^ TOC](#toc)
 
 ## Install <a name="install"></a>
@@ -349,5 +337,22 @@ or
 Unless you explicitly state otherwise, any contribution intentionally submitted
 for inclusion in this crate by you, as defined in the Apache-2.0 license, shall
 be dual licensed as above, without any additional terms or conditions.
+
+[^ TOC](#toc)
+
+## Notes
+
+- Hebrew **points** can be subdivided in:
+  - Vowels (code points: *U+05B4 .. U+05BB, U+05C7*)
+  - Semi-Vowels (code points: *U+05B0 .. U+05B3*)  
+  - Reading Signs (code points: *U+05BC .. U+05BD + U+05BF + U+05C1 .. U+05C2*) [^judeo-spanish]
+  [^judeo-spanish]: For me it not clear yet if the 'HEBREW POINT JUDEO-SPANISH VARIKA' a reading sign or not. For the time being this code-point will be part of the *reading signs*
+
+- Hebrew **letters** (consonants) can be subdivided in:
+  - Normal consonants (code points: *U+05D0 .. U+05D9, U+05DB, U+05DC, U+05DE, U+05E0 .. U+05E2, U+05E4, U+05E6 .. U+05EA*)
+  - Final consonants (code points: *U+05DA, U+05DD, U+05DF, U+05E3 and U+05E5*)  
+  - Wide consonants (code points: *U+FB21 .. U+FB28*)
+  - Consonants with vowel (code points: *U+FB2A .. U+FB36, U+FB38 .. U+FB3C, U+FB3E, U+FB40, U+FB41, U+FB43, U+FB44, U+FB46 .. U+FB4E*)
+  - Alternative consonants (code points: *U+FB20, U+FB29*)
 
 [^ TOC](#toc)

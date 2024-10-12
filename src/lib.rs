@@ -1,3 +1,6 @@
+// the whole crate is no_std
+#![no_std]
+// include README.md with additional tests
 #![doc = include_str!("../README.md")]
 
 // contains all function API's
