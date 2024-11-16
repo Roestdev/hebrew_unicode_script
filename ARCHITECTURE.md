@@ -25,7 +25,7 @@ The layout of the crate is as follows:
   
   > Contains all functions for testing individual characters (that are applicable) within the unicode code page: *Alphabetic Presentation Form*.
 
-- [collections_api.rs](src/collections_api.rs)
+- [collections.rs](src/collections.rs)
   
   > Contains all functions related to collections of individual characters or collections of collections.
 

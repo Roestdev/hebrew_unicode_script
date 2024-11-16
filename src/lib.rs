@@ -4,14 +4,14 @@
 #![doc = include_str!("../README.md")]
 
 // contains all function API's
-mod collections_api;
+mod collections;
 mod unicode_block_apf;
 mod unicode_block_hbr;
 
 // re-export
-pub use self::collections_api::unicode_block_alphabetic_presentation_form::*;
-pub use self::collections_api::unicode_block_hebrew::*;
-pub use self::collections_api::unicode_script_hebrew::*;
+pub use self::collections::unicode_block_alphabetic_presentation_forms::*;
+pub use self::collections::unicode_block_hebrew::*;
+pub use self::collections::unicode_script_hebrew::*;
 
 pub use self::unicode_block_hbr::hebrew_accents::*;
 pub use self::unicode_block_hbr::hebrew_consonants::*;

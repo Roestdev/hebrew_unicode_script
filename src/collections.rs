@@ -449,7 +449,7 @@ pub mod unicode_block_hebrew {
     }
 }
 
-pub mod unicode_block_alphabetic_presentation_form {
+pub mod unicode_block_alphabetic_presentation_forms {
     use crate::*;
     /// Checks if the given character belongs to the unicode block 'Alphabetic Presentation Form'.
     ///
