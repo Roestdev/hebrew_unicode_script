@@ -1,5 +1,5 @@
 pub mod apf_consonant_wide {
-    /// Checks if the given character is a APF consonant wide alef.
+    /// Checks if the given character is a APF consonant: wide alef.
     ///
     /// # Example
     /// ```
@@ -12,12 +12,12 @@ pub mod apf_consonant_wide {
         // U+FB21
         matches!(c, '\u{FB21}')
     }
-    /// Checks if the given character is a APF consonant wide dalet.
+    /// Checks if the given character is a APF consonant: wide dalet.
     ///
     /// # Example
     /// ```
     /// use hebrew_unicode_script::is_apf_consonant_wide_dalet;
-    /// 
+    ///
     /// let consonant = 'ﬢ';
     /// assert!(is_apf_consonant_wide_dalet(consonant));
     /// ```
@@ -25,7 +25,7 @@ pub mod apf_consonant_wide {
         // U+FB22
         matches!(c, '\u{FB22}')
     }
-    /// Checks if the given character is a APF consonant wide he.
+    /// Checks if the given character is a APF consonant: wide he.
     ///
     /// # Example
     /// ```
@@ -38,7 +38,7 @@ pub mod apf_consonant_wide {
         // U+FB23
         matches!(c, '\u{FB23}')
     }
-    /// Checks if the given character is a APF consonant wide kaf.
+    /// Checks if the given character is a APF consonant: wide kaf.
     ///
     /// # Example
     /// ```
@@ -51,7 +51,7 @@ pub mod apf_consonant_wide {
         // U+FB24
         matches!(c, '\u{FB24}')
     }
-    /// Checks if the given character is a APF consonant wide lamed.
+    /// Checks if the given character is a APF consonant: wide lamed.
     ///
     /// # Example
     /// ```
@@ -64,7 +64,7 @@ pub mod apf_consonant_wide {
         // U+FB25
         matches!(c, '\u{FB25}')
     }
-    /// Checks if the given character is a APF consonant wide final-mem.
+    /// Checks if the given character is a APF consonant wide: final-mem.
     ///
     /// # Example
     /// ```
@@ -77,7 +77,7 @@ pub mod apf_consonant_wide {
         // U+FB26
         matches!(c, '\u{FB26}')
     }
-    /// Checks if the given character is a APF consonant wide resh.
+    /// Checks if the given character is a APF consonant: wide resh.
     ///
     /// # Example
     /// ```
@@ -90,7 +90,7 @@ pub mod apf_consonant_wide {
         // U+FB27
         matches!(c, '\u{FB27}')
     }
-    /// Checks if the given character is a APF consonant with vowel:
+    /// Checks if the given character is a APF consonant: with tav.
     ///
     /// # Example
     /// ```
@@ -105,7 +105,7 @@ pub mod apf_consonant_wide {
     }
 }
 pub mod apf_consonant_with_vowel {
-    /// Checks if the character is a APF consonant with vowel: yod & hiriq
+    /// Checks if the character is a APF consonant with vowel: yod & hiriq.
     ///
     /// # Example
     /// ```
@@ -118,7 +118,7 @@ pub mod apf_consonant_with_vowel {
         // U+FB1D
         matches!(c, '\u{FB1D}')
     }
-    /// Checks if the character is a APF consonant with vowel: shin & shindot
+    /// Checks if the character is a APF consonant with vowel: shin & shindot.
     ///
     /// # Example
     /// ```
@@ -131,7 +131,7 @@ pub mod apf_consonant_with_vowel {
         // U+FB2A
         matches!(c, '\u{FB2A}')
     }
-    /// Checks if the character is a APF consonant with vowel: shin & & sindot
+    /// Checks if the character is a APF consonant with vowel: shin & sindot.
     ///
     /// # Example
     /// ```
@@ -144,7 +144,7 @@ pub mod apf_consonant_with_vowel {
         // U+FB2B
         matches!(c, '\u{FB2B}')
     }
-    /// Checks if the character is a APF consonant with vowel: shin & dagesh & shindot
+    /// Checks if the character is a APF consonant with vowel: shin & dagesh & shindot.
     ///
     /// # Example
     /// ```
@@ -157,7 +157,7 @@ pub mod apf_consonant_with_vowel {
         // U+FB2C
         matches!(c, '\u{FB2C}')
     }
-    /// Checks if the character is a APF consonant with vowel: shin & dagesh & sindot
+    /// Checks if the character is a APF consonant with vowel: shin & dagesh & sindot.
     ///
     /// # Example
     /// ```
@@ -170,7 +170,7 @@ pub mod apf_consonant_with_vowel {
         // U+FB2D
         matches!(c, '\u{FB2D}')
     }
-    /// Checks if the given character is a APF consonant with vowel: alef & patah
+    /// Checks if the given character is a APF consonant with vowel: alef & patah.
     ///
     /// # Example
     /// ```
@@ -183,7 +183,7 @@ pub mod apf_consonant_with_vowel {
         // U+FB2E
         matches!(c, '\u{FB2E}')
     }
-    /// Checks if the given character is a APF consonant with vowel: alef & qamats
+    /// Checks if the given character is a APF consonant with vowel: alef & qamats.
     ///
     /// # Example
     /// ```
@@ -196,7 +196,7 @@ pub mod apf_consonant_with_vowel {
         // U+FB2F
         matches!(c, '\u{FB2F}')
     }
-    /// Checks if the given character is a APF consonant with vowel: alef & mapiq
+    /// Checks if the given character is a APF consonant with vowel: alef & mapiq.
     ///
     /// # Example
     /// ```
@@ -209,7 +209,7 @@ pub mod apf_consonant_with_vowel {
         // U+FB30
         matches!(c, '\u{FB30}')
     }
-    /// Checks if the given character is a APF consonant with vowel: bet & dagesh
+    /// Checks if the given character is a APF consonant with vowel: bet & dagesh.
     ///
     /// # Example
     /// ```
@@ -222,7 +222,7 @@ pub mod apf_consonant_with_vowel {
         // U+FB31
         matches!(c, '\u{FB31}')
     }
-    /// Checks if the given character is a APF consonant with vowel: gimel & dagesh
+    /// Checks if the given character is a APF consonant with vowel: gimel & dagesh.
     ///
     /// # Example
     /// ```
@@ -235,7 +235,7 @@ pub mod apf_consonant_with_vowel {
         // U+FB32
         matches!(c, '\u{FB32}')
     }
-    /// Checks if the given character is a APF consonant with vowel: dalet & dagesh
+    /// Checks if the given character is a APF consonant with vowel: dalet & dagesh.
     ///
     /// # Example
     /// ```
@@ -248,7 +248,7 @@ pub mod apf_consonant_with_vowel {
         // U+FB33
         matches!(c, '\u{FB33}')
     }
-    /// Checks if the given character is a APF consonant with vowel: he & mapiq
+    /// Checks if the given character is a APF consonant with vowel: he & mapiq.
     ///
     /// # Example
     /// ```
@@ -261,7 +261,7 @@ pub mod apf_consonant_with_vowel {
         // U+FB34
         matches!(c, '\u{FB34}')
     }
-    /// Checks if the given character is a APF consonant with vowel: vav & dagesh
+    /// Checks if the given character is a APF consonant with vowel: vav & dagesh.
     ///
     /// # Example
     /// ```
@@ -274,7 +274,7 @@ pub mod apf_consonant_with_vowel {
         // U+FB35
         matches!(c, '\u{FB35}')
     }
-    /// Checks if the given character is a APF consonant with vowel: zayin & dagesh
+    /// Checks if the given character is a APF consonant with vowel: zayin & dagesh.
     ///
     /// # Example
     /// ```
@@ -287,7 +287,7 @@ pub mod apf_consonant_with_vowel {
         // U+FB36
         matches!(c, '\u{FB36}')
     }
-    /// Checks if the given character is a APF consonant with vowel: tet & dagesh
+    /// Checks if the given character is a APF consonant with vowel: tet & dagesh.
     ///
     /// # Example
     /// ```
@@ -300,7 +300,7 @@ pub mod apf_consonant_with_vowel {
         // U+FB38
         matches!(c, '\u{FB38}')
     }
-    /// Checks if the given character is a APF consonant with vowel: yod & dagesh
+    /// Checks if the given character is a APF consonant with vowel: yod & dagesh.
     ///
     /// # Example
     /// ```
@@ -313,7 +313,7 @@ pub mod apf_consonant_with_vowel {
         // U+FB39
         matches!(c, '\u{FB39}')
     }
-    /// Checks if the given character is a APF consonant with vowel: final-kaf & dagesh
+    /// Checks if the given character is a APF consonant with vowel: final-kaf & dagesh.
     ///
     /// # Example
     /// ```
@@ -326,7 +326,7 @@ pub mod apf_consonant_with_vowel {
         // U+FB3A
         matches!(c, '\u{FB3A}')
     }
-    /// Checks if the given character is a APF consonant with vowel: kaf & dagesh
+    /// Checks if the given character is a APF consonant with vowel: kaf & dagesh.
     ///
     /// # Example
     /// ```
@@ -339,7 +339,7 @@ pub mod apf_consonant_with_vowel {
         // U+FB3B
         matches!(c, '\u{FB3B}')
     }
-    /// Checks if the given character is a APF consonant with vowel: lamed & dagesh
+    /// Checks if the given character is a APF consonant with vowel: lamed & dagesh.
     ///
     /// # Example
     /// ```
@@ -353,7 +353,7 @@ pub mod apf_consonant_with_vowel {
         // U+FB3C
         matches!(c, '\u{FB3C}')
     }
-    /// Checks if the given character is a APF consonant with vowel: mem & dagesh
+    /// Checks if the given character is a APF consonant with vowel: mem & dagesh.
     ///
     /// # Example
     /// ```
@@ -366,7 +366,7 @@ pub mod apf_consonant_with_vowel {
         // U+FB3E
         matches!(c, '\u{FB3E}')
     }
-    /// Checks if the given character is a APF consonant with vowel: nun & dagesh
+    /// Checks if the given character is a APF consonant with vowel: nun & dagesh.
     ///
     /// # Example
     /// ```
@@ -379,7 +379,7 @@ pub mod apf_consonant_with_vowel {
         // U+FB40
         matches!(c, '\u{FB40}')
     }
-    /// Checks if the given character is a APF consonant with vowel: samekh & dagesh
+    /// Checks if the given character is a APF consonant with vowel: samekh & dagesh.
     ///
     /// # Example
     /// ```
@@ -392,7 +392,7 @@ pub mod apf_consonant_with_vowel {
         // U+FB41
         matches!(c, '\u{FB41}')
     }
-    /// Checks if the given character is a APF consonant with vowel: final-pe & dagesh
+    /// Checks if the given character is a APF consonant with vowel: final-pe & dagesh.
     ///
     /// # Example
     /// ```
@@ -405,7 +405,7 @@ pub mod apf_consonant_with_vowel {
         // U+FB43
         matches!(c, '\u{FB43}')
     }
-    /// Checks if the given character is a APF consonant with vowel: pe & dagesh
+    /// Checks if the given character is a APF consonant with vowel: pe & dagesh.
     ///
     /// # Example
     /// ```
@@ -418,7 +418,7 @@ pub mod apf_consonant_with_vowel {
         // U+FB44
         matches!(c, '\u{FB44}')
     }
-    /// Checks if the given character is a APF consonant with vowel: tsadi & dagesh
+    /// Checks if the given character is a APF consonant with vowel: tsadi & dagesh.
     ///
     /// # Example
     /// ```
@@ -431,7 +431,7 @@ pub mod apf_consonant_with_vowel {
         // U+FB46
         matches!(c, '\u{FB46}')
     }
-    /// Checks if the given character is a APF consonant with vowel: qof & dagesh
+    /// Checks if the given character is a APF consonant with vowel: qof & dagesh.
     ///
     /// # Example
     /// ```
@@ -444,7 +444,7 @@ pub mod apf_consonant_with_vowel {
         // U+FB47
         matches!(c, '\u{FB47}')
     }
-    /// Checks if the given character is a APF consonant with vowel: resh & dagesh
+    /// Checks if the given character is a APF consonant with vowel: resh & dagesh.
     ///
     /// # Example
     /// ```
@@ -457,7 +457,7 @@ pub mod apf_consonant_with_vowel {
         // U+FB48
         matches!(c, '\u{FB48}')
     }
-    /// Checks if the given character is a APF consonant with vowel: shin & dagesh
+    /// Checks if the given character is a APF consonant with vowel: shin & dagesh.
     ///
     /// # Example
     /// ```
@@ -470,7 +470,7 @@ pub mod apf_consonant_with_vowel {
         // U+FB49
         matches!(c, '\u{FB49}')
     }
-    /// Checks if the given character is a APF consonant with vowel: tav & dagesh
+    /// Checks if the given character is a APF consonant with vowel: tav & dagesh.
     ///
     /// # Example
     /// ```
@@ -483,7 +483,7 @@ pub mod apf_consonant_with_vowel {
         // U+FB4A
         matches!(c, '\u{FB4A}')
     }
-    /// Checks if the given character is a APF consonant with vowel: vav & holam
+    /// Checks if the given character is a APF consonant with vowel: vav & holam.
     ///
     /// # Example
     /// ```
@@ -496,7 +496,7 @@ pub mod apf_consonant_with_vowel {
         // U+FB4B
         matches!(c, '\u{FB4B}')
     }
-    /// Checks if the given character is a APF consonant with vowel:bet & rafe
+    /// Checks if the given character is a APF consonant with vowel:bet & rafe.
     ///
     /// # Example
     /// ```
@@ -509,7 +509,7 @@ pub mod apf_consonant_with_vowel {
         // U+FB4C
         matches!(c, '\u{FB4C}')
     }
-    /// Checks if the given character is a APF consonant with vowel:  kaf & rafe
+    /// Checks if the given character is a APF consonant with vowel:  kaf & rafe.
     ///
     /// # Example
     /// ```
@@ -522,7 +522,7 @@ pub mod apf_consonant_with_vowel {
         // U+FB4D
         matches!(c, '\u{FB4D}')
     }
-    /// Checks if the given character is a APF consonant with vowel: pe & rafe
+    /// Checks if the given character is a APF consonant with vowel: pe & rafe.
     ///
     /// # Example
     /// ```
@@ -537,7 +537,7 @@ pub mod apf_consonant_with_vowel {
     }
 }
 pub mod apf_letter_alternative {
-   /// Checks if the given character is a APF consonant with vowel:
+    /// Checks if the given character is a APF consonant: alternative ayin.
     ///
     /// # Example
     /// ```
@@ -550,7 +550,7 @@ pub mod apf_letter_alternative {
         // U+FB20
         matches!(c, '\u{FB20}')
     }
-    /// Checks if the given character is a APF consonant with vowel:
+    /// Checks if the given character is a APF letter: alternative plus sign.
     ///
     /// # Example
     /// ```
@@ -563,9 +563,9 @@ pub mod apf_letter_alternative {
         // U+FB29
         matches!(c, '\u{FB29}')
     }
- }
+}
 pub mod apf_ligature {
-    /// Checks if the given character is a APF ligature yiddish yod-yod-patah
+    /// Checks if the given character is a APF ligature: yiddish yod-yod-patah.
     ///
     /// # Example
     /// ```
@@ -578,7 +578,7 @@ pub mod apf_ligature {
         // U+FB1F
         matches!(c, '\u{FB1F}')
     }
-    /// Checks if the given character is a APF ligature alef-lamed.
+    /// Checks if the given character is a APF ligature: alef-lamed.
     ///
     /// # Example
     /// ```
@@ -593,7 +593,7 @@ pub mod apf_ligature {
     }
 }
 pub mod apf_point {
-    /// Checks if the given character is a APF point judeo-spanish_varika:
+    /// Checks if the given character is a APF point: judeo-spanish_varika.
     ///
     /// # Example
     /// ```

@@ -27,8 +27,8 @@ pub use self::unicode_block_apf::apf_ligature::*;
 pub use self::unicode_block_apf::apf_point::*;
 
 // contains the trait API
-mod trait_impl;
 mod trait_def;
+mod trait_impl;
 // re-export
 pub use self::trait_def::HebrewUnicodeScript;
 //pub use self::trait_impl::HebrewUnicodeScript;

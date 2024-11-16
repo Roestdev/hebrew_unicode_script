@@ -15,6 +15,24 @@ pub mod unicode_script_hebrew {
     pub fn is_script_hbr(c: char) -> bool {
         is_hbr_block(c) || is_apf_block(c)
     }
+    /// Checks if the given character is a 'consonant' type within the unicode script 'Hebrew'.
+    ///
+    /// # Example
+    ///
+    /// ```
+    /// use hebrew_unicode_script::is_script_hbr_consonant;
+    ///
+    /// let test_str = "אבגדהוזחטיכךלמםנןסעפףצץקרשת";
+    /// for c in test_str.chars() {
+    ///   assert!(is_script_hbr_consonant(c));
+    /// }
+    /// let afp_alternative = '\u{FB20}';
+    /// assert!(is_script_hbr_consonant(afp_alternative));
+    ///
+    /// ```
+    pub fn is_script_hbr_consonant(c: char) -> bool {
+        is_hbr_consonant(c) || is_apf_consonant(c)
+    }
     /// Checks if the given character is a 'point' type within the unicode script 'Hebrew'.
     ///
     /// # Example
@@ -62,26 +80,22 @@ pub mod unicode_script_hebrew {
         is_hbr_point_reading_sign(c) || is_apf_point_reading_sign(c)
     }
 
-    // todo!()
-    ///
-
-    /// Checks if the given character is a 'consonant' type within the unicode script 'Hebrew'.
+    /// Checks if the given character is a 'ligature' type within the unicode script 'Hebrew'.
     ///
     /// # Example
     ///
     /// ```
-    /// use hebrew_unicode_script::is_script_hbr_consonant;
+    /// use hebrew_unicode_script::is_script_hbr_ligature;
     ///
-    /// let test_str = "אבגדהוזחטיכךלמםנןסעפףצץקרשת";
+    /// let test_str = "װױײ";
     /// for c in test_str.chars() {
-    ///   assert!(is_script_hbr_consonant(c));
+    ///   assert!(is_script_hbr_ligature(c));
     /// }
-    /// let afp_alternative = '\u{FB20}';
-    /// assert!(is_script_hbr_consonant(afp_alternative));
-    ///
+    /// let liga_yiddish = '\u{FB1F}';
+    /// assert!(is_script_hbr_ligature(liga_yiddish));
     /// ```
-    pub fn is_script_hbr_consonant(c: char) -> bool {
-        is_hbr_consonant(c) || is_apf_consonant(c)
+    pub fn is_script_hbr_ligature(c: char) -> bool {
+        is_hbr_ligature_yiddish(c) || is_apf_ligature(c)
     }
 
     /// Checks if the given character is a 'ligature_yiddisch' type within the unicode script 'Hebrew'.
@@ -100,24 +114,6 @@ pub mod unicode_script_hebrew {
     /// ```
     pub fn is_script_hbr_ligature_yiddisch(c: char) -> bool {
         is_hbr_ligature_yiddish(c) || is_apf_ligature_yiddisch_yod_yod_patah(c)
-    }
-
-    /// Checks if the given character is a 'ligature_yiddisch' type within the unicode script 'Hebrew'.
-    ///
-    /// # Example
-    ///
-    /// ```
-    /// use hebrew_unicode_script::is_script_hbr_ligature;
-    ///
-    /// let test_str = "װױײ";
-    /// for c in test_str.chars() {
-    ///   assert!(is_script_hbr_ligature(c));
-    /// }
-    /// let liga_yiddish = '\u{FB1F}';
-    /// assert!(is_script_hbr_ligature(liga_yiddish));
-    /// ```
-    pub fn is_script_hbr_ligature(c: char) -> bool {
-        is_hbr_ligature_yiddish(c) || is_apf_ligature(c)
     }
 }
 
@@ -194,6 +190,8 @@ pub mod unicode_block_hebrew {
             || is_hbr_accent_dehi(c)
             || is_hbr_accent_zinor(c)
     }
+
+
     /// Checks if the given character is a HBR mark.
     ///
     /// # Example
