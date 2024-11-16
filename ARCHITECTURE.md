@@ -73,13 +73,13 @@ The layout of the crate is as follows:
 
 4th level: (unicode code-points)
 ``` sh
-    - is_hbr_consonant_final_kaf(c) -> bool
-    - is_hbr_consonant_kaf(c) -> bool
-    - is_hbr_point_sheva(c) -> bool
-    - is_hbr_accent_revia(c: char) -> bool
-    - is_hbr_mark_masora_circle(c: char) -> bool
-    - is_hbr_punctuation_sof_pasuq(c: char) -> bool
-    - is_hbr_ligature_yiddisch_vav_yod(c: char) -> bool
+     - is_hbr_consonant_final_kaf(c) -> bool
+     - is_hbr_consonant_kaf(c) -> bool
+     - is_hbr_point_sheva(c) -> bool
+     - is_hbr_accent_revia(c: char) -> bool
+     - is_hbr_mark_masora_circle(c: char) -> bool
+     - is_hbr_punctuation_sof_pasuq(c: char) -> bool
+     - is_hbr_ligature_yiddisch_vav_yod(c: char) -> bool
 ```
 ### Unicode block: 'Alphabetic Presentation Forms'
 
@@ -101,11 +101,11 @@ The layout of the crate is as follows:
 
 4th level: (unicode code-points)
 ``` sh
-    - is_apf_consonant_wide_kaf(c) -> bool
-    - is_apf_consonant_vowel_he_mapiq(c) -> bool
-    - is_apf_consonant_alternative_ayin(c) -> bool
-    - is_apf_ligature_alef_lamed(c: char) -> bool
-    - is_apf_point_judeo_spanish_varika(c: char) -> bool
+      - is_apf_consonant_wide_kaf(c) -> bool
+      - is_apf_consonant_vowel_he_mapiq(c) -> bool
+      - is_apf_consonant_alternative_ayin(c) -> bool
+      - is_apf_ligature_alef_lamed(c: char) -> bool
+      - is_apf_point_judeo_spanish_varika(c: char) -> bool
 ```
 # Examples
 
