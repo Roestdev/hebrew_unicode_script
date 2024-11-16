@@ -109,18 +109,18 @@ The layout of the crate is as follows:
 ```
 # Examples
 
-| code point                     | ⊂ | block-set #1         | ⊂ | block-set #2| ⊂ |script - set #1        |
+| code point (level 4)           | ⊂ | block (level3)            | ⊂ | block (level2)   | ⊂ |script (level1)       |
 | ------------------------------ | - | ------------------------- | - | -----------------| - | -------------------- |
-| hbr_consonant_alef             | ⊂ | hbr_consonant_normal      | ⊂ | hbr_consonant   | ⊂ | script_hbr_consonant |
-| hbr_consonant_final_mem        | ⊂ | hbr_consonant_final       | ⊂ | hbr_consonant   | ⊂ | script_hbr_consonant |
-| apf_consonant_wide_alef        | ⊂ | apf_consonant_wide        | ⊂ | apf_consonant   | ⊂ | script_hbr_consonant |
-| hbr_point_qubuts               | ⊂ | hbr_point_vowel           | ⊂ | hbr_point       | ⊂ | script_hbr_point |
-| hbr_point_sheva                | ⊂ | hbr_point_semi_vowel      | ⊂ | hbr_point       | ⊂ | script_hbr_point |
-| hbr_point_meteg                | ⊂ | hbr_point_reading_sign    | ⊂ | hbr_point       | ⊂ | script_hbr_point |
-| apf_point_judeo_spanish_varika | ⊂ | afp_point_reading_sign    |   |                 | ⊂ | script_hbr_point |
-| hbr_point_meteg                | ⊂ | hbr_point_reading_sign    |   |                 | ⊂ | script_hbr_point_reading_sign |
-| apf_point_judeo_spanish_varika | ⊂ | afp_point_reading_sign    |   |                 | ⊂ | script_hbr_point_reading_sign |
-| hbr_ligature_yiddisch_vav_yod  | ⊂ | is_hbr_ligature_yiddish   |   |                 | ⊂ | script_hbr_ligature |
-| apf_ligature_alef_lamed        | ⊂ | is_apf_ligature           |   |                 | ⊂ | script_hbr_ligature |
-| hbr_ligature_yiddisch_vav_yod  | ⊂ | is_hbr_ligature_yiddish   |   |                 | ⊂ | is_script_hbr_ligature_yiddisch |
-| apf_ligature_yiddisch_yod_yod_patah |   |                      |   |                 | ⊂ | is_script_hbr_ligature_yiddisch |
+| hbr_consonant_alef             | ⊂ | hbr_consonant_normal      | ⊂ | hbr_consonant    | ⊂ | script_hbr_consonant |
+| hbr_consonant_final_mem        | ⊂ | hbr_consonant_final       | ⊂ | hbr_consonant    | ⊂ | script_hbr_consonant |
+| apf_consonant_wide_alef        | ⊂ | apf_consonant_wide        | ⊂ | apf_consonant    | ⊂ | script_hbr_consonant |
+| hbr_point_qubuts               | ⊂ | hbr_point_vowel           | ⊂ | hbr_point        | ⊂ | script_hbr_point     |
+| hbr_point_sheva                | ⊂ | hbr_point_semi_vowel      | ⊂ | hbr_point        | ⊂ | script_hbr_point     |
+| hbr_point_meteg                | ⊂ | hbr_point_reading_sign    | ⊂ | hbr_point        | ⊂ | script_hbr_point     |
+| apf_point_judeo_spanish_varika | ⊂ | afp_point_reading_sign    |   |                  | ⊂ | script_hbr_point     |
+| hbr_point_meteg                | ⊂ | hbr_point_reading_sign    |   |                  | ⊂ | script_hbr_point_reading_sign |
+| apf_point_judeo_spanish_varika | ⊂ | afp_point_reading_sign    |   |                  | ⊂ | script_hbr_point_reading_sign |
+| hbr_ligature_yiddisch_vav_yod  | ⊂ | is_hbr_ligature_yiddish   |   |                  | ⊂ | script_hbr_ligature |
+| apf_ligature_alef_lamed        | ⊂ | is_apf_ligature           |   |                  | ⊂ | script_hbr_ligature |
+| hbr_ligature_yiddisch_vav_yod  | ⊂ | is_hbr_ligature_yiddish   |   |                  | ⊂ | script_hbr_ligature_yiddisch |
+| apf_ligature_yiddisch_yod_yod_patah |   |                      |   |                  | ⊂ | script_hbr_ligature_yiddisch |
