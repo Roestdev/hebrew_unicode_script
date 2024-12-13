@@ -213,8 +213,7 @@ All (trait)functions return either true *or* false.
 
 ## Code Coverage<a name="codecoverage"></a>
 
-Current code coverage is *100%* [^code coverage]
-[^code coverage]: The code coverage figures shown in crates.io are (very) different!
+Current code coverage is *100%*
 
 ![Code Coverage](doc/images/Code_Coverage_20241022_123030.png)
 
@@ -225,10 +224,9 @@ To generate the code coverage, I used grconv ([see here how to use it](https://g
 ### Points
 
 - Hebrew **points** can be subdivided in:
-  - Vowels (code points: *U+05B4 .. U+05BB, U+05C7*)
+  - Vowels (code points: *U+05B4 .. U+05BB and U+05C7*)
   - Semi-Vowels (code points: *U+05B0 .. U+05B3*)  
-  - Reading Signs (code points: *U+05BC .. U+05BD + U+05BF + U+05C1 .. U+05C2*) [^judeo-spanish]
-  [^judeo-spanish]: For me it not clear yet if the 'HEBREW POINT JUDEO-SPANISH VARIKA' a reading sign or not. For the time being this code-point will be part of the *reading signs*
+  - Reading Signs (code points: *U+05BC, U+05BD, U+05BF, U+05C1, U+05C2 and U+FB1E*)
 
 ### Letters
 
@@ -236,7 +234,6 @@ To generate the code coverage, I used grconv ([see here how to use it](https://g
   - Normal consonants (code points: *U+05D0 .. U+05D9, U+05DB, U+05DC, U+05DE, U+05E0 .. U+05E2, U+05E4, U+05E6 .. U+05EA*)
   - Final consonants (code points: *U+05DA, U+05DD, U+05DF, U+05E3 and U+05E5*)  
   - Wide consonants (code points: *U+FB21 .. U+FB28*)
-  - Consonants with vowel (code points: *U+FB2A .. U+FB36, U+FB38 .. U+FB3C, U+FB3E, U+FB40, U+FB41, U+FB43, U+FB44, U+FB46 .. U+FB4E*)
   - Alternative consonants (code points: *U+FB20, U+FB29*)
 
 ## References<a name="references"></a>
@@ -244,6 +241,7 @@ To generate the code coverage, I used grconv ([see here how to use it](https://g
 ### Unicode Script 'Hebrew'
 
 - [Unicode script for the Hebrew language](https://www.charactercodes.net/script/hebr)
+- [Unicode15.0.0/chapter 9.1](https://www.unicode.org/versions/Unicode15.0.0/ch09.pdf) 
 
 ### Unicode Block 'Hebrew'
 
