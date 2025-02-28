@@ -9,6 +9,7 @@
 
 **Table of contents**<a name="toc"></a>
 <!-- toc -->
+- [Project Status](#project-status)
 - [Description ](#description-)
 - [Examples ](#examples-)
   - [Using the function API](#using-the-function-api)
@@ -26,18 +27,26 @@
   - [Unicode Script 'Hebrew'](#unicode-script-hebrew)
   - [Unicode Block 'Hebrew'](#unicode-block-hebrew)
   - [Unicode Block 'Alphabetic Presentation Forms' (APF)](#unicode-block-alphabetic-presentation-forms-apf)
-  - [Unicode Problems for Hebrew](#unicode-problems-for-hebrew)
+  - [Unicode problems for Hebrew](#unicode-problems-for-hebrew)
 - [License](#license)
   - [Contribution](#contribution)
 - [Questions, requests, bugs](#questions-requests-bugs)
 
 <!-- tocstop -->
 
+## Project Status 
+
+`Current Version:` The latest stable release is version 1.0.0. This version includes all core functionalities for identifying and validating Unicode characters associated with the Hebrew script and its relevant Unicode code blocks.
+
+`Stability:` The crate has been thoroughly tested and is considered stable for production use. Users can rely on its existing features without concern for significant changes or new functionalities being introduced.
+
+`Updates:` While the project is not actively seeking new features or major enhancements, critical bug fixes and security updates will be addressed as needed. Users are encouraged to report any issues they encounter.
+
 ## Description <a name="description"></a>
 
-This crate (`hebrew_unicode_script`) is a low-level library written in Rust and designed to facilitate the identification and validation of Unicode characters (unicode code points) related to the **Hebrew** script and associated unicode code blocks.
+This crate (`hebrew_unicode_script`) is a low-level library written in Rust and designed to facilitate the identification and validation of Unicode characters (Unicode code points) related to the **Hebrew** script and associated Unicode code blocks.
 
-Both a check on individual characters and membership of collections are possible. Examples of collections are vowels, yiddish characters, punctations etc.. 
+Both a check on individual characters and membership of collections are possible. Examples of collections are vowels, Yiddish characters, punctations etc.. 
 
 More information can be found in the file [ARCHITECTURE](ARCHITECTURE.md).
 
@@ -256,13 +265,13 @@ To generate the code coverage, I used grconv ([see here how to use it](https://g
    - **Note:** only the following code-point range is applicable: *U+FB1D .. U+FB4F*
 - See also: <https://graphemica.com/blocks/alphabetic-presentation-forms>  
 
-### Unicode Problems for Hebrew
+### Unicode problems for Hebrew
 
-There are some issues with unicode and Hebrew. These are described on the following web page: [Unicode Problems](https://mechon-mamre.org/c/hr/unicode.htm)  
+There are some issues with Unicode and Hebrew. These are described on the following web page: [Unicode Problems](https://mechon-mamre.org/c/hr/unicode.htm)  
 
 <br><br>
 
-To learn more about Unicodesee: [Unicode main site](https://www.unicode.org/), [Unicode Scripts](https://www.unicode.org/standard/supported.html) and [Unicode Blocks](https://www.unicode.org/Public/UCD/latest/ucd/Blocks.txt)
+To learn more about Unicode see: [Unicode main site](https://www.unicode.org/), [Unicode Scripts](https://www.unicode.org/standard/supported.html) and [Unicode Blocks](https://www.unicode.org/Public/UCD/latest/ucd/Blocks.txt)
 
 See [Hebrew Cantillation Marks And Their Encoding](https://mechon-mamre.org/c/hr/index.htm) for more specifics on this matter.
 
