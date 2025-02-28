@@ -36,7 +36,9 @@
 
 ## Project Status 
 
-`Current Version:` The latest stable release is version 1.0.0. This version includes all core functionalities for identifying and validating Unicode characters associated with the Hebrew script and its relevant Unicode code blocks.
+**This project is currently in maintenance mode.**
+
+`Current Version:` The latest stable release is version 2.0.0. This version includes all core functionalities for identifying and validating Unicode characters associated with the Hebrew script and its relevant Unicode code blocks.
 
 `Stability:` The crate has been thoroughly tested and is considered stable for production use. Users can rely on its existing features without concern for significant changes or new functionalities being introduced.
 
