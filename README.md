@@ -271,7 +271,7 @@ To generate the code coverage, I used grconv ([see here how to use it](https://g
 
 There are some issues with Unicode and Hebrew. These are described on the following web page: [Unicode Problems](https://mechon-mamre.org/c/hr/unicode.htm)  
 
-<br><br>
+<br>
 
 To learn more about Unicode see: [Unicode main site](https://www.unicode.org/), [Unicode Scripts](https://www.unicode.org/standard/supported.html) and [Unicode Blocks](https://www.unicode.org/Public/UCD/latest/ucd/Blocks.txt)
 
@@ -281,8 +281,12 @@ See [Hebrew Cantillation Marks And Their Encoding](https://mechon-mamre.org/c/hr
 
 The `hebrew_unicode_script` library is distributed under either of
 
- * [Apache License, Version 2.0](LICENSE-APACHE)
- * [MIT license](LICENSE-MIT)
+ * Apache License, Version 2.0
+   ([LICENSE-APACHE](LICENSE-APACHE) or
+   http://www.apache.org/licenses/LICENSE-2.0)
+ * MIT license
+   ([LICENSE-MIT](LICENSE-MIT) or
+   http://opensource.org/licenses/MIT)
 
 at your option.
 
